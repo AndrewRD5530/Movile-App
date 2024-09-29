@@ -41,10 +41,7 @@
   justify-content: center;
 
 }
-.promocion{  
-  
- 
-}
+
 .promocion img{
   border-radius: 30px;
 
@@ -108,5 +105,15 @@
   height: 100%;
   background-color: #673e28;
   margin: 3%;
+  border-radius: 30px;
+  display: flex;  
+  justify-content: center;
+ 
+}
+
+.CardImg{
+  width: 95%;
+  height: 60%;
+  background-color: chartreuse;
   border-radius: 30px;
 }
