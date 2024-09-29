@@ -27,6 +27,14 @@
 }
 
 
+.bg-gray-800{
+  background-color: #673e28;
+  color: #fafafa;
+}
+.menu1{
+  color: #efefef;
+}
+
 .con1{
   display: flex;
   align-items: center;
@@ -41,3 +49,31 @@
   border-radius: 30px;
 
 }
+
+
+
+.category-container {
+  display: flex;
+  justify-content: space-around; /* Espacio entre los botones */
+  margin: 20px; /* Margen alrededor del contenedor */
+}
+
+.category-button {
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid transparent; /* Borde transparente */
+  color: #545555; /* Color de texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+  border-color: #8c8c8c;
+ border-radius: 40px;
+}
+
+.category-button:hover {
+  border-color: #aeaeae; /* Borde visible al pasar el ratón */
+  background-color: #673e28;
+  color: aliceblue;
+}
+
