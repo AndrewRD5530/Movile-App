@@ -10,7 +10,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'pro-description',
+    loadChildren: () => import('./pro-description/pro-description.module').then( m => m.ProDescriptionPageModule)
   },
+  {
+    path: 'pro-description',
+    loadChildren: () => import('./pro-description/pro-description.module').then( m => m.ProDescriptionPageModule)
+  },
+
 ];
 
 @NgModule({
