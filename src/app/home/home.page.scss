@@ -120,12 +120,12 @@
 
 .tab-bar-custom {
   background-color: #673e28; /* Color de fondo personalizado */
-  color: #fafafa; /* Color del texto */
+  color: #000000; /* Color del texto */
 }
 
 .tab-bar-custom ion-tab-button {
   --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-  --color: #efefef; /* Color por defecto de los iconos */
+  --color: #0b0b0b; /* Color por defecto de los iconos */
 }
 
 .tab-bar-custom ion-tab-button ion-icon {
