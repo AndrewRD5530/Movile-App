@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -16,12 +15,119 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+}
+
+
+.bg-gray-800{
+  background-color: #673e28;
+  color: #fafafa;
+}
+.menu1{
+  color: #efefef;
+}
+
+.con1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.promocion img{
+  border-radius: 30px;
+
+}
+.category-container {
+  display: flex;
+  justify-content: space-around; /* Espacio entre los botones */
+  margin: 20px; /* Margen alrededor del contenedor */
+ 
+}
+
+.category-button {
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid transparent; /* Borde transparente */
+  color: #545555; /* Color de texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+  border-color: #8c8c8c;
+ border-radius: 40px;
+}
+
+.category-button:hover {
+  border-color: #aeaeae; /* Borde visible al pasar el ratón */
+  background-color: #673e28;
+  color: aliceblue;
+}
+
+.con3{
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.cards1{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.cards2{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.CardProduct{
+  width: 40%;
+  height: 100%;
+  background-color: #673e28;
+  margin: 3%;
+  border-radius: 30px;
+  display: flex;  
+  justify-content: center;
+ 
+}
+
+.CardImg{
+  width: 95%;
+  height: 60%;
+  background-color: chartreuse;
+  border-radius: 30px;
+}
+.CardImg img{
+  border-radius: 30px;
+
+}
+
+
+.tab-bar-custom {
+  background-color: #673e28; /* Color de fondo personalizado */
+  color: #fafafa; /* Color del texto */
+}
+
+.tab-bar-custom ion-tab-button {
+  --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
+  --color: #efefef; /* Color por defecto de los iconos */
+}
+
+.tab-bar-custom ion-tab-button ion-icon {
+  font-size: 24px;
 }
