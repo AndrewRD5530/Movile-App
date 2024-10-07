@@ -1,28 +1,9 @@
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
+.container {
 
-#container a {
-  text-decoration: none;
+  background-color: #fff2dd;
 }
-
 
 .bg-gray-800{
   background-color: #673e28;
@@ -98,36 +79,69 @@
 .CardProduct{
   width: 40%;
   height: 100%;
-  background-color: #673e28;
   margin: 3%;
   border-radius: 30px;
   display: flex;  
   justify-content: center;
- 
+  
+  
 }
 
 .CardImg{
-  width: 95%;
+  width: 100%;
   height: 60%;
-  background-color: chartreuse;
   border-radius: 30px;
 }
 .CardImg img{
   border-radius: 30px;
 
 }
+.CardImg p{
+  text-align: center;
+
+}
 
 
 .tab-bar-custom {
   background-color: #673e28; /* Color de fondo personalizado */
-  color: #fafafa; /* Color del texto */
+  color: #000000; /* Color del texto */
 }
 
 .tab-bar-custom ion-tab-button {
   --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-  --color: #efefef; /* Color por defecto de los iconos */
+  --color: #0b0b0b; /* Color por defecto de los iconos */
+  --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
+  transition: transform 0.2s ease-in-out; /* Transición para animación */
 }
 
-.tab-bar-custom ion-tab-button ion-icon {
-  font-size: 24px;
+.tab-bar-custom ion-tab-button:active {
+  transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
+
+
+
+.animated-font-text {
+  font-family: 'Playfair Display', serif; /* Aplicar la fuente elegante */
+  font-size: 24px; /* Tamaño del texto */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
