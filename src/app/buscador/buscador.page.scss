@@ -26,6 +26,10 @@ ion-menu::part(backdrop) {
   }
 }
 
+ion-progress-bar {
+  --background: #687fe9;
+  --progress-background: #09c567;
+}
 .tab-bar-custom ion-tab-button {
   --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
   --color: #ffffff; /* Color por defecto de los iconos */

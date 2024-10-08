@@ -124,6 +124,11 @@
             </ion-row>
           </ion-grid>
         </ion-toolbar>
+        <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
+        <ion-alert *ngIf="isAlertOpen" color="danger" style="margin-top: 10px;">
+          <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
+          <ion-label>No se encontraron productos</ion-label>
+        </ion-alert>
         <ion-grid>
           <ion-row>
             <ion-list *ngFor="let product of products">
