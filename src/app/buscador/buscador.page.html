@@ -68,7 +68,13 @@
   </nav>
 
   <ion-toolbar>
-    <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
+    <ion-grid [fixed]="true">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-searchbar animated="true" [debounce]="1000" (ionInput)="searchProducts($event)" placeholder="Buscar..."></ion-searchbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 
   <ion-list>
