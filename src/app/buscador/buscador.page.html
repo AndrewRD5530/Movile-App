@@ -77,20 +77,32 @@
     </ion-grid>
   </ion-toolbar>
 
-  <ion-list>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="assets/img/product1.jpg" alt="Producto 1">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>Nombre del Producto</h2>
-        <p>Descripción del producto</p>
-        <ion-badge color="success">$ Precio</ion-badge>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-list *ngFor="let product of products">
+        <ion-card>
+          <img alt="Silhouette of mountains" [src]="product.urlImagen" width="700%">
+          <ion-card-header>
+            <ion-card-title>{{product.nombre}}</ion-card-title>
+            <ion-card-subtitle>Producto</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+          <div class="ion-padding flex ion-justify-content-between ">
+            <ion-button size="small" fill="outline" color="warning">
+              <ion-icon name="cart" slot="start"></ion-icon>
+                Ver producto
+            </ion-button>
+            <ion-badge color="success" slot="end" class="ion-align-center ion-padding">$ {{product.precio}}</ion-badge>
+          </div>
+        </ion-card>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
+
 
 <!--Menu de navegacion inferior-->
 <ion-tab-bar slot="bottom" class="tab-bar-custom">

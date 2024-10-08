@@ -8,7 +8,6 @@ import axios from 'axios';
 export class BuscadorPage implements OnInit {
 
   //definición de variables
-  searchTerm: string = '';
   products: any[] = [];
   isMenuOpen = false; // Variable para manejar el estado del menú
 
@@ -18,20 +17,17 @@ export class BuscadorPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getProducts();
-    console.log(this.products);
   }
 
   // Método para buscar productos
   searchProducts(event: any) {
     const searchTerm = event.target.value;
     if (searchTerm) {
-      this.searchTerm = searchTerm;
-      this.getProducts();
+      this.getProducts(searchTerm);
     }
   }
 
-  async getProducts() {
+  async getProducts(searchTerm: string) {
     const token  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5NTY2NDQzLCJpYXQiOjE3MjY5NzQ0NDMsImp0aSI6IjE2YTFmZjA0MjZkZDQzMDA4NTk1OTdhN2MzZWU0MjcyIiwidXNlcl9pZCI6Mn0.be7ZN6uS-UfO73XEaZy3bPtExryonp-Uv_vrnnc5QAI'
 
     const headers = {
@@ -40,11 +36,12 @@ export class BuscadorPage implements OnInit {
     };
 
     const json = {
-      "keyWord": this.searchTerm
+      "keyWord": searchTerm
     };
     const url = 'http://127.0.0.1:8000/ToolsData/api/SeachProductos';
     const response = await axios.post(url, json, { headers });
-    this.products = response.data.data.productos;
-    console.log(this.products);
+    const productos = response.data.data.productos;
+    this.products = productos.flat();
+    console.log("productos", this.products);
   }
 }
