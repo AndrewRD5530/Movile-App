@@ -1,11 +1,8 @@
 
-.bg-gray-800 {
-  background-color: #673e28;
-  color: #fafafa;
+ion-menu::part(backdrop) {
+  background-color: rgba(255, 213, 0, 0.5);
 }
-.menu1 {
-  color: #efefef;
-}
+
 
 .animated-font-text {
   font-family: "Playfair Display", serif; /* Aplicar la fuente elegante */
@@ -17,7 +14,6 @@
   color: transparent;
   animation: gradientShift 4s ease-in-out infinite;
 }
-
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
