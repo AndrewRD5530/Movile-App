@@ -69,9 +69,7 @@
         </div>
       </div>
     </nav>
-  
-   
-    
+
     <div class="m-4 con1">
       <div class="promocion">
         <img src="../../assets/icon/cafe3.jpg" >
@@ -79,55 +77,32 @@
     </div>
     <br>
     <div class="category-container">
-      <button class="category-button">Carnes </button>
-      <button class="category-button">Lacteos </button>
-      <button class="category-button">Vegetales </button>
-    </div>
-    <br>
-    <div class="con3">
-      <div class="cards1">
-        <div class="CardProduct">
-          <div class="CardImg">
-            <img src="../../assets/icon/card1.avif" >
-            <p>Nombre</p>
-            <p>Precio</p>
-          </div>
-  
-        </div>
-        <div class="CardProduct">
-          <div class="CardImg">
-            <img src="../../assets/icon/card2.avif" >
-            <p>Nombre</p>
-            <p>Precio</p>
-          </div>
-  
-        </div>
-      </div>
-  
-      <br>
-      <div class="cards2">
-        <div class="CardProduct">
-          <div class="CardImg">
-            <img src="../../assets/icon/card3.avif" >
-            <p>Nombre</p>
-            <p>Precio</p>
-          </div>
-        </div>
-    
-        <div class="CardProduct">
-          <div class="CardImg">
-            <img src="../../assets/icon/card4.avif" >
-            <p>Nombre</p>
-            <p>Precio</p>
-          </div>
-        </div>
+      <div *ngFor="let categoria of categorias | slice:0:1;">
+        <button class="category-button">{{ categoria.nombre}} </button>
       </div>
     </div>
+    <h1>Mejores productos</h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="2" *ngFor="let item of productos">
+          <ion-card>
+            <img alt="Silhouette of mountains" [src]="item.urlImagen"  style="background-color: aqua;"/>
+            <ion-card-header>
+              <ion-card-title>{{item.precio}}</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              {{item.nombre}}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
  
 </ion-content>
 
-<ion-tab-bar slot="bottom" class="tab-bar-custom">
+<ion-tab-bar slot="bottom" class="">
     <ion-tab-button tab="home" routerLink="/home">
       <ion-icon name="home-outline">Home</ion-icon>
       <ion-label>Inicio</ion-label>
