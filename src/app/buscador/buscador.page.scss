@@ -1,117 +1,42 @@
-//css menu superior
-.container {
-    background-color: #fff2dd;
-  }
-  
-  .bg-gray-800{
-    background-color: #673e28;
-    color: #fafafa;
-  }
-  .menu1{
-    color: #efefef;
-  }
-  
+
+ion-menu::part(backdrop) {
+  background-color: rgba(255, 213, 0, 0.5);
+}
+
+
 .animated-font-text {
-    font-family: 'Playfair Display', serif; /* Aplicar la fuente elegante */
-    font-size: 24px; /* Tamaño del texto */
-    font-weight: bold;
-    background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: gradientShift 4s ease-in-out infinite;
+  font-family: "Playfair Display", serif; /* Aplicar la fuente elegante */
+  font-size: 24px; /* Tamaño del texto */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
-//buscador y los resultados de la busqueda
-/* Estilo para el ion-toolbar y el título */
-ion-toolbar {
-    background: linear-gradient(to right, #3b8dff, #6eb5ff);
-    color: #fff;
-    ion-title {
-      font-weight: bold;
-      text-align: center;
-    }
-  }
-  
-  /* Estilo para la barra de búsqueda */
-  ion-searchbar {
-    --background: #f1f1f1;
-    --placeholder-color: #999;
-    --color: #333;
-    border-radius: 8px;
-    margin: 10px;
-  }
-  
-  /* Estilo para la lista de productos */
-  ion-list {
-    margin-top: 20px;
-    ion-item {
-      border-radius: 15px;
-      margin: 10px;
-      background: #ffffff;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  
-      /* Estilo del thumbnail */
-      ion-thumbnail {
-        img {
-          border-radius: 10px;
-        }
-      }
-  
-      /* Estilo del contenido del producto */
-      ion-label {
-        h2 {
-          font-size: 1.2em;
-          font-weight: bold;
-          color: #444;
-        }
-  
-        p {
-          font-size: 0.9em;
-          color: #666;
-        }
-      }
-  
-      /* Estilo del precio del producto */
-      ion-badge {
-        --color: #fff;
-        --background: #28a745;
-        font-size: 0.9em;
-        padding: 5px 10px;
-        border-radius: 8px;
-        margin-top: 8px;
-      }
-    }
-  }
-  
+ion-progress-bar {
+  --background: #687fe9;
+  --progress-background: #09c567;
+}
+.tab-bar-custom ion-tab-button {
+  --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
+  --color: #ffffff; /* Color por defecto de los iconos */
+  --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
+  transition: transform 0.2s ease-in-out; /* Transición para animación */
+}
 
-
-
-//css menu inferior 
-.tab-bar-custom {
-    background-color: #673e28; /* Color de fondo personalizado */
-    color: #000000; /* Color del texto */
-  }
-  
-  .tab-bar-custom ion-tab-button {
-    --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-    --color: #0b0b0b; /* Color por defecto de los iconos */
-    --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
-    transition: transform 0.2s ease-in-out; /* Transición para animación */
-  }
-  
-  .tab-bar-custom ion-tab-button:active {
-    transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
-  }
+.tab-bar-custom ion-tab-button:active {
+  transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
+}

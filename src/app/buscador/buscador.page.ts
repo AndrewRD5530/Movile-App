@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
+import { debounceTime } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-buscador',
@@ -7,17 +11,74 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscadorPage implements OnInit {
 
-  constructor() { }
+  products: any[] = [];
+  isMenuOpen = false; // Estado del menú
+  isLoading = false;  // Estado de la barra de progreso
+  isAlertOpen = false;  // Estado de la alerta
+  private searchSubject: Subject<string> = new Subject();
 
-  
-  isMenuOpen = false; // Variable para manejar el estado del menú
-  
-  
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen; // Alternar el estado del menú
-  }
+  constructor(private alertController: AlertController) { }
 
   ngOnInit() {
+    this.searchSubject.pipe(debounceTime(500)).subscribe(searchTerm => {
+      this.getProducts(searchTerm);
+    });
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  searchProducts(event: any) {
+    const searchTerm = event.target.value.trim();
+    if (searchTerm) {
+      this.isLoading = true; // Mostrar la barra de progreso mientras se busca
+      this.searchSubject.next(searchTerm);
+    } else {
+      this.products = []; // Limpiar los productos si no hay búsqueda
+    }
+  }
+
+  async getProducts(searchTerm: string) {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5NTY2NDQzLCJpYXQiOjE3MjY5NzQ0NDMsImp0aSI6IjE2YTFmZjA0MjZkZDQzMDA4NTk1OTdhN2MzZWU0MjcyIiwidXNlcl9pZCI6Mn0.be7ZN6uS-UfO73XEaZy3bPtExryonp-Uv_vrnnc5QAI';
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+
+    const json = {
+      "keyWord": searchTerm
+    };
+
+    const url = 'http://127.0.0.1:8000/ToolsData/api/SeachProductos';
+
+    try {
+      const response = await axios.post(url, json, { headers });
+      const productos = response.data.data.productos;
+
+      if (productos.length > 0 && productos[0].details === "producto no encontrado") {
+        await this.showAlert('No se encontraron productos');
+      } else {
+        this.products = productos.flat();
+      }
+    } catch (error) {
+      console.error("Error al obtener productos:", error);
+      await this.showAlert('Ocurrió un error al buscar productos.');
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  // Método para mostrar la alerta
+  async showAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Atención',
+      message: message,
+      buttons: ['OK'],
+      cssClass: 'custom-alert'
+    });
+
+    await alert.present();
   }
 
 }
