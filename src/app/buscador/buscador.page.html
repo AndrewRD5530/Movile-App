@@ -132,7 +132,7 @@
         <ion-grid>
           <ion-row>
             <ion-list *ngFor="let product of products">
-              <ion-card>
+              <ion-card routerLink="/pro-description/{{product.id}}">
                 <img alt="Silhouette of mountains" [src]="product.urlImagen" width="700%">
                 <ion-card-header>
                   <ion-card-title>{{product.nombre}}</ion-card-title>
