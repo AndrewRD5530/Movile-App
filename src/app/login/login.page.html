@@ -19,12 +19,16 @@
     </ion-list>
 
     <ion-button expand="block" class="login" (click)="onSubmit()">Iniciar Sesión</ion-button>
-
-    <div class="footer">
-      <span>Registrate</span>
-      <span>¿Olvidaste tu contraseña?</span>
-    </div>
+    <ion-grid>
+      <ion-row class="ion-justify-content-around">
+        <ion-col size="6">
+          <ion-button  expand="block" fill="outline" color="loginColor" size="12">¿Olvidaste tu contraseña?</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button  expand="block" fill="outline" color="loginColor" size="12" routerLink="/registrate">¿No tienes cuenta?</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
   </div>
-
 </ion-content>

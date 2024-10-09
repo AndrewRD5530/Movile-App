@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
         //redireccionar a la página de inicio
         window.location.href = '/home';
       } else {
-        console.log("Error:", respuesta);
+        console.log("Error:", respuesta.error);
       }
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
