@@ -10,7 +10,9 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -18,7 +20,14 @@ const routes: Routes = [
     path: 'registrate',
     loadChildren: () => import('./registrate/registrate.module').then( m => m.RegistratePageModule)
   },
-
+  {
+    path: 'buscador',
+    loadChildren: () => import('./buscador/buscador.module').then(m => m.BuscadorPageModule)
+  },
+  {
+    path: 'pro-description',
+    loadChildren: () => import('./pro-description/pro-description.module').then(m => m.ProDescriptionPageModule)
+  },
 ];
 
 @NgModule({

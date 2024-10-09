@@ -1,27 +1,146 @@
-#container {
+
+
+.container {
+  background-color: #4a4947;
+}
+
+.bg-gray-800{
+  background-color: #673e28;
+  color: #fafafa;
+}
+.menu1{
+  color: #efefef;
+}
+
+.con1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.promocion img{
+  border-radius: 30px;
+
+}
+.category-container {
+  display: flex;
+  justify-content: space-around; /* Espacio entre los botones */
+  margin: 20px; /* Margen alrededor del contenedor */
+ 
+}
+
+.category-button {
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid transparent; /* Borde transparente */
+  color: #545555; /* Color de texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+  border-color: #8c8c8c;
+ border-radius: 40px;
+}
+
+.category-button:hover {
+  border-color: #aeaeae; /* Borde visible al pasar el ratón */
+  background-color: #673e28;
+  color: aliceblue;
+}
+
+.con3{
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.cards1{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.cards2{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.CardProduct{
+  width: 40%;
+  height: 100%;
+  margin: 3%;
+  border-radius: 30px;
+  display: flex;  
+  justify-content: center;
+  
+  
+}
+
+.CardImg{
+  width: 100%;
+  height: 60%;
+  border-radius: 30px;
+}
+.CardImg img{
+  border-radius: 30px;
+
+}
+.CardImg p{
   text-align: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+
+.tab-bar-custom {
+  background-color: #673e28; /* Color de fondo personalizado */
+  color: #b7b4b4; /* Color del texto */
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.tab-bar-custom ion-tab-button {
+  --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
+  --color: #0b0b0b; /* Color por defecto de los iconos */
+  --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
+  transition: transform 0.2s ease-in-out; /* Transición para animación */
 }
 
-#container a {
-  text-decoration: none;
+.tab-bar-custom ion-tab-button:active {
+  transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
+
+
+
+.animated-font-text {
+  font-family: 'Playfair Display', serif; /* Aplicar la fuente elegante */
+  font-size: 24px; /* Tamaño del texto */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+

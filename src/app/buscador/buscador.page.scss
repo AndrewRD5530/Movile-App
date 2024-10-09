@@ -1,0 +1,42 @@
+
+ion-menu::part(backdrop) {
+  background-color: rgba(255, 213, 0, 0.5);
+}
+
+
+.animated-font-text {
+  font-family: "Playfair Display", serif; /* Aplicar la fuente elegante */
+  font-size: 24px; /* Tamaño del texto */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+ion-progress-bar {
+  --background: #687fe9;
+  --progress-background: #09c567;
+}
+.tab-bar-custom ion-tab-button {
+  --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
+  --color: #ffffff; /* Color por defecto de los iconos */
+  --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
+  transition: transform 0.2s ease-in-out; /* Transición para animación */
+}
+
+.tab-bar-custom ion-tab-button:active {
+  transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
+}

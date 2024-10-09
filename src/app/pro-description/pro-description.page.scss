@@ -1,0 +1,98 @@
+ion-content {
+    --ion-background-color: #0c0805;
+  }
+.styROW {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: #673e28; 
+    border: 10px solid #0c0805;
+    border-radius: 0 0 45px 45px;
+
+  }
+  .styRowB {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent; 
+  }
+.styItem {
+    background-color: transparent; 
+  }
+.styIMG{
+    width: 350px;
+    height: 350px;
+    display: flex;
+  }
+.styButton{
+    width: 10%;
+    background-color: #673e28;
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+  }
+  .cardIMG{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+  .CardProduct{
+    background-color: #673e28;
+    margin: 3%;
+    border-radius: 30px;
+    display: flex;  
+    justify-content: center;
+  }
+  .ionCARD{
+    background-color: transparent;
+    border-radius: 30px;
+  }
+  .styName{
+    //mover texto un poco a la derecha
+    margin-left: 20px;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .styPrice{
+    margin-left: 72%;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.styCat{
+    margin-left: 20px;
+    color: #e6c044;
+}
+.styDes{
+    margin-left: 20px;
+    color: #adadad;
+}
+.styDesCr{
+    margin-left: 20px;
+}
+.category-button {
+    width: 180px;
+    color: #0c0805; /* Color de texto */
+    background-color: #e6c044;
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+    border-color: #e0e0e0;
+   margin-left: 50%;
+   font-weight: bold;
+   letter-spacing: 2px;
+  }
+  
+  .category-button:hover {
+    border-color: #aeaeae; /* Borde visible al pasar el ratón */
+    background-color: #673e28;
+    color: aliceblue;
+  }
