@@ -1,3 +1,13 @@
+
+.ion-color-loginColor {
+    --ion-color-base: #6d4c41; /* Color de fondo */
+    --ion-color-color: #fff; /* Color del texto */
+}
+
+.ion-color-loginColor:hover {
+    --ion-color-color: #ffcc00; /* Nuevo color del texto cuando se hace hover */
+}
+
 .screen-1 {
     display: flex;
     flex-direction: column;
@@ -48,6 +58,12 @@ ion-button.login {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     width: 90%;
     max-width: 400px;
+}
+
+
+.color-login {
+    --background: #5d4037;
+    --color: #fff;
 }
 
 ion-button.login:hover {

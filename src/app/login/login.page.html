@@ -9,23 +9,26 @@
     <ion-list class="input-container">
       <ion-item>
         <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
-        <ion-input label="Correo:" placeholder="ejemplo@gmail.com"></ion-input>
+        <ion-input [(ngModel)]="email" label="Correo:" type="email" placeholder="correo@ejemplo.com"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
-        <ion-input label="Contraseña:" placeholder="********" type="password"></ion-input>
+        <ion-input [(ngModel)]="password" label="Contraseña:" placeholder="********" type="password"></ion-input>
         <ion-icon name="eye-outline" slot="end" class="show-hide"></ion-icon>
       </ion-item>
     </ion-list>
-  
 
-    <ion-button expand="block" class="login">Ingresar</ion-button>
-
-    <div class="footer">
-      <span>Registrate</span>
-      <span>¿Olvidaste tu contraseña?</span>
-    </div>
+    <ion-button expand="block" class="login" (click)="onSubmit()">Iniciar Sesión</ion-button>
+    <ion-grid>
+      <ion-row class="ion-justify-content-around">
+        <ion-col size="6">
+          <ion-button  expand="block" fill="outline" color="loginColor" size="12">¿Olvidaste tu contraseña?</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button  expand="block" fill="outline" color="loginColor" size="12" routerLink="/registrate">¿No tienes cuenta?</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
   </div>
-
 </ion-content>

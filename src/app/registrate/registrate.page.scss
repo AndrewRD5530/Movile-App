@@ -8,7 +8,14 @@
     padding: 20px;
     background: linear-gradient(135deg, #e6ccb2, #f5ebe0);
 }
+.ion-color-loginColor {
+    --ion-color-base: #6d4c41; /* Color de fondo */
+    --ion-color-color: #fff; /* Color del texto */
+}
 
+.ion-color-loginColor:hover {
+    --ion-color-color: #ffcc00; /* Nuevo color del texto cuando se hace hover */
+}
 //Estilo para el título 
 h1 {
     font-size: 2.1rem;
