@@ -40,7 +40,7 @@ export class BuscadorPage implements OnInit {
   }
 
   async getProducts(searchTerm: string) {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5NTY2NDQzLCJpYXQiOjE3MjY5NzQ0NDMsImp0aSI6IjE2YTFmZjA0MjZkZDQzMDA4NTk1OTdhN2MzZWU0MjcyIiwidXNlcl9pZCI6Mn0.be7ZN6uS-UfO73XEaZy3bPtExryonp-Uv_vrnnc5QAI';
+    const token = localStorage.getItem('access_token');
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
