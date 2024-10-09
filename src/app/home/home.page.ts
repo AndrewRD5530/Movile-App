@@ -24,7 +24,7 @@ export class HomePage {
 
   async ObtenerProducto() {
     // definir token bearer para autenticar
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwMTczMDkzLCJpYXQiOjE3Mjc1ODEwOTMsImp0aSI6ImIwMWU2MTcwYzQyOTRiODk4MmQ3NjUzM2I3Y2YyMWFmIiwidXNlcl9pZCI6Mn0.mIjAYqOvPFOuG1JSJ0K43aZ6SwbC-_HLOWtSJfDAc-A"
+    const token = localStorage.getItem('access_token');
     // headers para autenticar
     const headers = {
       "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export class HomePage {
   }
   async ObtenerCategorias() {
     // definir token bearer para autenticar
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwMTczMDkzLCJpYXQiOjE3Mjc1ODEwOTMsImp0aSI6ImIwMWU2MTcwYzQyOTRiODk4MmQ3NjUzM2I3Y2YyMWFmIiwidXNlcl9pZCI6Mn0.mIjAYqOvPFOuG1JSJ0K43aZ6SwbC-_HLOWtSJfDAc-A"
+    const token = localStorage.getItem('access_token');
     // headers para autenticar
     const headers = {
       "Content-Type": "application/json",
