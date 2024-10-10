@@ -1,4 +1,13 @@
 
+.imagen-responsiva {
+  max-width: 100%; /* La imagen nunca será más ancha que el contenedor */
+  height: auto;    /* Mantiene la proporción de la imagen */
+  display: block;  /* Evita espacios blancos alrededor de la imagen */
+}
+
+
+
+
 ion-menu::part(backdrop) {
   background-color: rgba(84, 199, 81, 0.5);
 }
