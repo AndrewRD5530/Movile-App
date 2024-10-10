@@ -1,6 +1,7 @@
 
 <ion-content [fullscreen]="true">
- 
+  
+
   <!--Inicio del menu-->
   <ion-menu contentId="main-content" >
     <ion-header>
@@ -35,24 +36,26 @@
   </ion-menu >
 
   <div class="ion-page" id="main-content">
-    <ion-header>
+    <ion-header class="menu-encabezado">
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Menu</ion-title>
+        <ion-title style="font-family: Georgia, 'Times New Roman', Times, serif;">Super Price</ion-title>
       </ion-toolbar>
     </ion-header>
     
   </div>
   
   <!--fin del menu-->
-  <br><br>
-   <!--inicio del banner promocional-->
+
+  <div class="container11">
+    <br><br>
+      <!--inicio del banner promocional-->
   <ion-grid [fixed]="true" class="banner1">
     <ion-row>
       <ion-col>
-        <img src="../../assets/icon/cafe3.jpg" class="imagen-responsiva">
+        <img src="../../assets/icon/super.png" class="imagen-responsiva">
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -61,7 +64,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <h1 style="text-align: center; font-size: 20px; font-family:fantasy;" >Mejores productos</h1>
+          <h1 style="text-align: center; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: aliceblue;">Mejores productos</h1>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -86,6 +89,10 @@
     </ion-grid>
     
 
+  </div>
+  <br><br>
+
+   
  
 </ion-content>
 
