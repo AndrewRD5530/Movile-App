@@ -7,7 +7,7 @@ ion-progress-bar {
 }
 .tab-bar-custom ion-tab-button {
   --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-  --color: #ffffff; /* Color por defecto de los iconos */
+  --color: #000000; /* Color por defecto de los iconos */
   --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
   transition: transform 0.2s ease-in-out; /* Transición para animación */
 }
@@ -40,5 +40,16 @@ ion-progress-bar {
 
 .custom-card ion-card-content {
   padding: 16px; /* Asegura suficiente espacio en el contenido */
+}
+
+
+/* En tu archivo de estilos CSS */
+.description-column {
+  background-color: transparent !important; /* Asegura que el fondo sea transparente */
+}
+
+/* Asegura que los elementos dentro de la columna mantengan el color negro */
+.description-column ion-label {
+  color: black !important; /* Aplica color negro a las etiquetas de texto */
 }
 
