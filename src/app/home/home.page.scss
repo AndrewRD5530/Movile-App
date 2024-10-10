@@ -1,105 +1,13 @@
 
-
-.container {
-  background-color: #4a4947;
+ion-menu::part(backdrop) {
+  background-color: rgba(84, 199, 81, 0.5);
 }
 
-.bg-gray-800{
-  background-color: #673e28;
-  color: #fafafa;
-}
-.menu1{
-  color: #efefef;
-}
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
 
-.con1{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
 }
-
-.promocion img{
-  border-radius: 30px;
-
-}
-.category-container {
-  display: flex;
-  justify-content: space-around; /* Espacio entre los botones */
-  margin: 20px; /* Margen alrededor del contenedor */
- 
-}
-
-.category-button {
-  background-color: transparent; /* Fondo transparente */
-  border: 2px solid transparent; /* Borde transparente */
-  color: #545555; /* Color de texto */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 1rem; /* Tamaño de fuente */
-  cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
-  border-color: #8c8c8c;
- border-radius: 40px;
-}
-
-.category-button:hover {
-  border-color: #aeaeae; /* Borde visible al pasar el ratón */
-  background-color: #673e28;
-  color: aliceblue;
-}
-
-.con3{
-  width: 100%;
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
- 
-}
-.cards1{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.cards2{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.CardProduct{
-  width: 40%;
-  height: 100%;
-  margin: 3%;
-  border-radius: 30px;
-  display: flex;  
-  justify-content: center;
-  
-  
-}
-
-.CardImg{
-  width: 100%;
-  height: 60%;
-  border-radius: 30px;
-}
-.CardImg img{
-  border-radius: 30px;
-
-}
-.CardImg p{
-  text-align: center;
-
-}
-
 
 .tab-bar-custom {
   background-color: #673e28; /* Color de fondo personalizado */
@@ -118,29 +26,6 @@
 }
 
 
-
-.animated-font-text {
-  font-family: 'Playfair Display', serif; /* Aplicar la fuente elegante */
-  font-size: 24px; /* Tamaño del texto */
-  font-weight: bold;
-  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradientShift 4s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 
 
