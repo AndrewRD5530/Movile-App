@@ -1,4 +1,3 @@
-
 <ion-content [fullscreen]="true">
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -24,7 +23,6 @@
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <ion-label class="animated-font-text">SuperPrice</ion-label>
-
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -81,7 +79,6 @@
       <ion-content style="background-color: aliceblue !important;">
         <ion-menu-toggle auto-hide="false">
           <ion-list [inset]="true">
-        
             <ion-item color="medium" routerLink="/home" tab="home" routerDirection="root" routerLinkActive="active-link">
               <ion-icon name="home-outline" slot="start"></ion-icon>
               <ion-label>Inicio</ion-label>
@@ -117,89 +114,23 @@
         <ion-toolbar>
           <ion-grid [fixed]="true">
             <ion-row class="ion-justify-content-center" style="margin-top: 10px;">
-              <ion-col size="8">
-                <ion-toolbar>
-                  <ion-searchbar animated="true" [debounce]="1000" (ionInput)="searchProducts($event)" placeholder="Buscar..."></ion-searchbar>
-                </ion-toolbar>
+              <ion-col size="6" *ngFor="let producto of productos">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>{{ producto.name }}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-img [src]="producto.image" alt="{{ producto.name }}"></ion-img>
+                    <p>Precio: {{ producto.price }}</p>
+                    <ion-button expand="full" (click)="addToCart(producto)">Añadir al carrito</ion-button>
+                  </ion-card-content>
+                </ion-card>
               </ion-col>
             </ion-row>
           </ion-grid>
         </ion-toolbar>
-        <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
-        <ion-alert *ngIf="isAlertOpen" color="danger" style="margin-top: 10px;">
-          <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
-          <ion-label>No se encontraron productos</ion-label>
-        </ion-alert>
-
-        
-        <ion-card *ngFor="let product of products">
-          <ion-card-header>
-            <ion-card-title>{{ product.nombre }}</ion-card-title>
-            <ion-card-subtitle>Producto</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-grid>
-              <ion-row>
-                <!-- Columna para la imagen (50%) -->
-                <ion-col size="6" style="padding: 0;">
-                  <ion-thumbnail style="width: 100%; height: 12em;">
-                    <img 
-                      [src]="product.urlImagen" 
-                      alt="Product image" 
-                      style="width: 100%; height: 100%; object-fit: cover;" 
-                    />
-                  </ion-thumbnail>
-                </ion-col>
-        
-                <!-- Columna para la descripción (50%) -->
-                <ion-col size="6" class="description-column">
-                  <ion-list>
-                    <ion-item>
-                      <ion-label>
-                        <h2>{{ product.nombre }}</h2>
-                        <p>Descripción del producto aquí.</p>
-                      </ion-label>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>
-                        <h3>Precio: ${{ product.precio }}</h3>
-                      </ion-label>
-                    </ion-item>
-                  </ion-list>
-                </ion-col>
-                
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-        
-        
       </ion-content>
     </div>
   </ion-app>
-
 </ion-content>
-
-
-<!--Menu de navegacion inferior-->
-<ion-tab-bar slot="bottom" class="tab-bar-custom">
-  <ion-tab-button tab="home" routerLink="/home">
-    <ion-icon name="home-outline">Home</ion-icon>
-    <ion-label>Inicio</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="search" routerLink="/buscador">
-    <ion-icon name="search-outline">Home</ion-icon>
-    <ion-label>Buscar</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="promotions">
-    <ion-icon name="pricetags-outline">Home</ion-icon>
-    <ion-label>Promociones</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="account"  routerLink="/cuenta">
-    <ion-icon name="person-outline">Home</ion-icon>
-    <ion-label>Cuenta</ion-label>
-  </ion-tab-button>
-</ion-tab-bar>
+s

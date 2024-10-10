@@ -13,6 +13,9 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+   sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   async onSubmit() {
     console.log("Email:", this.email);
     console.log("Contraseña:", this.password);
@@ -31,9 +34,15 @@ export class LoginPage implements OnInit {
         const correo = respuesta.data.correo;
 
         //guardar en local storage
+        console.log("Tokens:", tokens);
+        console.log("Refresh:", refresh);
+        console.log("Correo:", correo);
         localStorage.setItem('access_token', tokens);
         localStorage.setItem('refresh_token', refresh);
         localStorage.setItem('correo', correo);
+        
+        //esperar 1 segundo
+        await this.sleep(2000);
 
         //redireccionar a la página de inicio
         window.location.href = '/home';
