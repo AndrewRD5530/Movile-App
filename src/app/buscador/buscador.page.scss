@@ -1,30 +1,5 @@
 
-ion-menu::part(backdrop) {
-  background-color: rgba(83, 204, 83, 0.5);
-}
 
-
-.animated-font-text {
-  font-family: "Playfair Display", serif; /* Aplicar la fuente elegante */
-  font-size: 24px; /* Tamaño del texto */
-  font-weight: bold;
-  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradientShift 4s ease-in-out infinite;
-}
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 ion-progress-bar {
   --background: #687fe9;
@@ -32,7 +7,7 @@ ion-progress-bar {
 }
 .tab-bar-custom ion-tab-button {
   --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-  --color: #ffffff; /* Color por defecto de los iconos */
+  --color: #000000; /* Color por defecto de los iconos */
   --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
   transition: transform 0.2s ease-in-out; /* Transición para animación */
 }
@@ -40,3 +15,41 @@ ion-progress-bar {
 .tab-bar-custom ion-tab-button:active {
   transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
+
+/* En tu archivo de estilos CSS */
+.custom-card {
+  background-color: white !important; /* Asegura que el fondo sea blanco */
+  color: black !important; /* Asegura que el texto sea negro */
+}
+
+/* Asegura que todos los elementos de texto dentro de la tarjeta sean de color negro */
+.custom-card ion-card-header,
+.custom-card ion-card-content,
+.custom-card ion-label {
+  color: black !important; /* Aplica color negro a los encabezados y etiquetas */
+}
+
+/* Si deseas personalizar aún más el estilo de la tarjeta, puedes agregar más reglas aquí */
+.custom-card ion-card-header {
+  border-bottom: 1px solid #ccc; /* Ejemplo: añade un borde inferior al encabezado */
+}
+
+.custom-card ion-card-title {
+  font-weight: bold; /* Ejemplo: hace que el título sea más grueso */
+}
+
+.custom-card ion-card-content {
+  padding: 16px; /* Asegura suficiente espacio en el contenido */
+}
+
+
+/* En tu archivo de estilos CSS */
+.description-column {
+  background-color: transparent !important; /* Asegura que el fondo sea transparente */
+}
+
+/* Asegura que los elementos dentro de la columna mantengan el color negro */
+.description-column ion-label {
+  color: black !important; /* Aplica color negro a las etiquetas de texto */
+}
+

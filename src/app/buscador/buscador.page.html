@@ -1,4 +1,3 @@
-
 <ion-content [fullscreen]="true">
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -24,7 +23,6 @@
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <ion-label class="animated-font-text">SuperPrice</ion-label>
-
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -81,20 +79,19 @@
       <ion-content style="background-color: aliceblue !important;">
         <ion-menu-toggle auto-hide="false">
           <ion-list [inset]="true">
-        
-            <ion-item color="warning" routerLink="/home" tab="home" routerDirection="root" routerLinkActive="active-link">
+            <ion-item color="medium" routerLink="/home" tab="home" routerDirection="root" routerLinkActive="active-link">
               <ion-icon name="home-outline" slot="start"></ion-icon>
               <ion-label>Inicio</ion-label>
             </ion-item>
-            <ion-item color="warning" routerLink="/buscador" routerDirection="root" routerLinkActive="active-link">
+            <ion-item color="medium" routerLink="/buscador" routerDirection="root" routerLinkActive="active-link">
               <ion-icon name="pricetags" slot="start"></ion-icon>
               <ion-label>Buscar</ion-label>
             </ion-item>
-            <ion-item color="warning" routerLink="/promociones" routerDirection="root" routerLinkActive="active-link">
+            <ion-item color="medium" routerLink="/promociones" routerDirection="root" routerLinkActive="active-link">
               <ion-icon name="pricetags" slot="start"></ion-icon>
               <ion-label>Promociones</ion-label>
             </ion-item>
-            <ion-item color="warning" routerLink="/cuenta" routerDirection="root" routerLinkActive="active-link">
+            <ion-item color="medium" routerLink="/cuenta" routerDirection="root" routerLinkActive="active-link">
               <ion-icon name="person-circle" slot="start"></ion-icon>
               <ion-label>Cuenta</ion-label>
             </ion-item>
@@ -117,68 +114,23 @@
         <ion-toolbar>
           <ion-grid [fixed]="true">
             <ion-row class="ion-justify-content-center" style="margin-top: 10px;">
-              <ion-col size="8">
-                <ion-toolbar>
-                  <ion-searchbar animated="true" [debounce]="1000" (ionInput)="searchProducts($event)" placeholder="Buscar..."></ion-searchbar>
-                </ion-toolbar>
+              <ion-col size="6" *ngFor="let producto of productos">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>{{ producto.name }}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-img [src]="producto.image" alt="{{ producto.name }}"></ion-img>
+                    <p>Precio: {{ producto.price }}</p>
+                    <ion-button expand="full" (click)="addToCart(producto)">Añadir al carrito</ion-button>
+                  </ion-card-content>
+                </ion-card>
               </ion-col>
             </ion-row>
           </ion-grid>
         </ion-toolbar>
-        <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
-        <ion-alert *ngIf="isAlertOpen" color="danger" style="margin-top: 10px;">
-          <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
-          <ion-label>No se encontraron productos</ion-label>
-        </ion-alert>
-        <ion-grid>
-          <ion-row>
-            <ion-list *ngFor="let product of products">
-              <ion-card routerLink="/pro-description/{{product.id}}">
-                <img alt="Silhouette of mountains" [src]="product.urlImagen" width="700%">
-                <ion-card-header>
-                  <ion-card-title>{{product.nombre}}</ion-card-title>
-                  <ion-card-subtitle>Producto</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                  Here's a small text description for the card content. Nothing more, nothing less.
-                </ion-card-content>
-                <div class="ion-padding flex ion-justify-content-between ">
-                  <ion-button size="small" fill="outline" color="warning">
-                    <ion-icon name="cart" slot="start"></ion-icon>
-                      Ver producto
-                  </ion-button>
-                  <ion-badge color="success" slot="end" class="ion-align-center ion-padding">$ {{product.precio}}</ion-badge>
-                </div>
-              </ion-card>
-            </ion-list>
-          </ion-row>
-        </ion-grid>
       </ion-content>
     </div>
   </ion-app>
-
 </ion-content>
-
-
-<!--Menu de navegacion inferior-->
-<ion-tab-bar slot="bottom" class="tab-bar-custom">
-  <ion-tab-button tab="home" routerLink="/home">
-    <ion-icon name="home-outline">Home</ion-icon>
-    <ion-label>Inicio</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="search" routerLink="/buscador">
-    <ion-icon name="search-outline">Home</ion-icon>
-    <ion-label>Buscar</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="promotions">
-    <ion-icon name="pricetags-outline">Home</ion-icon>
-    <ion-label>Promociones</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="account"  routerLink="/cuenta">
-    <ion-icon name="person-outline">Home</ion-icon>
-    <ion-label>Cuenta</ion-label>
-  </ion-tab-button>
-</ion-tab-bar>
+s
