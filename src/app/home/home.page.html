@@ -1,7 +1,7 @@
 
 <ion-content [fullscreen]="true">
  
-
+  <!--Inicio del menu-->
   <ion-menu contentId="main-content" >
     <ion-header>
       <ion-toolbar>
@@ -45,53 +45,46 @@
     </ion-header>
     
   </div>
+  
+  <!--fin del menu-->
   <br><br>
-
-  <ion-grid [fixed]="true">
+   <!--inicio del banner promocional-->
+  <ion-grid [fixed]="true" class="banner1">
     <ion-row>
       <ion-col>
         <img src="../../assets/icon/cafe3.jpg" class="imagen-responsiva">
       </ion-col>
     </ion-row>
   </ion-grid>
-  
-  
+    <!--fin del banner promocional-->
 
-
-  
-    
-    
-
-    <div class="m-4 con1">
-      <div class="promocion">
-        
-      </div>
-    </div>
-
-
-    <br>
-    <div class="category-container">
-      <div *ngFor="let categoria of categorias | slice:0:1;">
-        <button class="category-button">{{ categoria.nombre}} </button>
-      </div>
-    </div>
-    <h1>Mejores productos</h1>
     <ion-grid>
       <ion-row>
-        <ion-col size="6" size-md="4" size-lg="2" *ngFor="let item of productos">
-          <ion-card>
-            <img alt="Silhouette of mountains" [src]="item.urlImagen"  style="background-color: aqua;"/>
+        <ion-col>
+          <h1 style="text-align: center; font-size: 20px; font-family:fantasy;" >Mejores productos</h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+    
+   
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-md="6" size-lg="6" *ngFor="let item of productos">
+          <ion-card class="custom-card">
+            <img alt="Imagen del producto" [src]="item.urlImagen" class="product-image"/>
             <ion-card-header>
-              <ion-card-title>{{item.precio}}</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <ion-card-title class="product-price">${{item.precio}}</ion-card-title>
+              <ion-card-subtitle class="product-subtitle">Oferta Especial</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content class="product-content">
               {{item.nombre}}
             </ion-card-content>
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
+    
 
  
 </ion-content>

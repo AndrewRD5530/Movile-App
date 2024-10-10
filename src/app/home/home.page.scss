@@ -5,7 +5,25 @@
   display: block;  /* Evita espacios blancos alrededor de la imagen */
 }
 
+.banner1 {
+  background: linear-gradient(135deg, #ff6f61, #ff9a8b); /* Fondo con degradado atractivo */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
+.imagen-responsiva {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;  /* Bordes redondeados para la imagen */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para hacerla resaltar */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagen-responsiva:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al hacer hover */
+}
 
 
 ion-menu::part(backdrop) {
@@ -32,6 +50,53 @@ ion-menu::part(container) {
 
 .tab-bar-custom ion-tab-button:active {
   transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
+}
+
+
+
+
+
+.custom-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.product-image {
+ 
+  width: 100%;
+  height: 12em; 
+  object-fit: cover;
+  
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: #f53d3d;
+  font-weight: bold;
+  text-align: center;
+}
+
+.product-subtitle {
+  font-size: 0.9rem;
+  color: #8c8c8c;
+  text-align: center;
+}
+
+.product-content {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+}
+
+ion-card {
+  background: linear-gradient(145deg, #fff, #f0f0f0);
 }
 
 
