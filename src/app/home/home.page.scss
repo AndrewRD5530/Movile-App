@@ -1,105 +1,45 @@
 
-
-.container {
-  background-color: #4a4947;
-}
-
-.bg-gray-800{
-  background-color: #673e28;
-  color: #fafafa;
-}
-.menu1{
-  color: #efefef;
-}
-
-.con1{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container11{
+  background-color: #529e72;
 
 }
 
-.promocion img{
-  border-radius: 30px;
-
-}
-.category-container {
-  display: flex;
-  justify-content: space-around; /* Espacio entre los botones */
-  margin: 20px; /* Margen alrededor del contenedor */
- 
+.imagen-responsiva {
+  max-width: 100%; /* La imagen nunca será más ancha que el contenedor */
+  height: auto;    /* Mantiene la proporción de la imagen */
+  display: block;  /* Evita espacios blancos alrededor de la imagen */
 }
 
-.category-button {
-  background-color: transparent; /* Fondo transparente */
-  border: 2px solid transparent; /* Borde transparente */
-  color: #545555; /* Color de texto */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 1rem; /* Tamaño de fuente */
-  cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
-  border-color: #8c8c8c;
- border-radius: 40px;
-}
-
-.category-button:hover {
-  border-color: #aeaeae; /* Borde visible al pasar el ratón */
-  background-color: #673e28;
-  color: aliceblue;
-}
-
-.con3{
-  width: 100%;
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
- 
-}
-.cards1{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.cards2{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.CardProduct{
-  width: 40%;
-  height: 100%;
-  margin: 3%;
-  border-radius: 30px;
-  display: flex;  
-  justify-content: center;
+.banner1 {
   
-  
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.CardImg{
-  width: 100%;
-  height: 60%;
-  border-radius: 30px;
-}
-.CardImg img{
-  border-radius: 30px;
-
-}
-.CardImg p{
-  text-align: center;
-
+.imagen-responsiva {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;  /* Bordes redondeados para la imagen */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para hacerla resaltar */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.imagen-responsiva:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al hacer hover */
+}
+
+
+ion-menu::part(backdrop) {
+  background-color: rgba(116, 194, 114, 0.5);
+}
+
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+
+  box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+}
 
 .tab-bar-custom {
   background-color: #673e28; /* Color de fondo personalizado */
@@ -119,28 +59,57 @@
 
 
 
-.animated-font-text {
-  font-family: 'Playfair Display', serif; /* Aplicar la fuente elegante */
-  font-size: 24px; /* Tamaño del texto */
-  font-weight: bold;
-  background: linear-gradient(90deg, #ffffff, #ffffff); /* Degradado elegante */
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradientShift 4s ease-in-out infinite;
+
+
+.custom-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+
+.product-image {
+ 
+  width: 100%;
+  height: 12em; 
+  object-fit: cover;
+  
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: #f53d3d;
+  font-weight: bold;
+  text-align: center;
+}
+
+.product-subtitle {
+  font-size: 0.9rem;
+  color: #8c8c8c;
+  text-align: center;
+}
+
+.product-content {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+}
+
+ion-card {
+  background: linear-gradient(145deg, #fff, #f0f0f0);
+}
+
+.menu-encabezado{
+  background-color: white;
+
+}
+
+
 
 
 
