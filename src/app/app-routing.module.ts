@@ -32,11 +32,11 @@ const routes: Routes = [
     path: 'cuenta',
     loadChildren: () => import('./cuenta/cuenta.module').then( m => m.CuentaPageModule)
    },
-   }
+   { 
     path: 'ofertas',
     loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
 
-  }
+   }
 
 ];
 
