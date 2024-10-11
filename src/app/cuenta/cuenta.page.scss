@@ -1,0 +1,49 @@
+.color-fondo {
+    background: linear-gradient(45deg, #f67105, #d2bf11);
+}
+
+ion-content {
+    --ion-background-color: white;
+}
+
+ion-card {
+    --boder:0px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+}
+
+.text-usuario {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 2rem;
+    text-align: center; font-weight: bold;
+    color: #202020;
+}
+.color-texto {
+    color: #202020;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: bold;
+}
+ion-fab-button {
+    --background: #b7f399;
+    --background-activated: #87d361;
+    --background-hover: #a3e681;
+    --border-radius: 15px;
+    --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --color: black;
+}
+
+ion-progress-bar {
+    --background: #f3e895;
+    --progress-background: #09c567;
+    background-color: #529e72;
+}
+
+ion-card ion-card-content{
+    --background-color: #f3e895;
+}
+
+.color-card{
+    background-color: #529e72;
+}
