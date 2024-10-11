@@ -25,15 +25,14 @@
       <ion-col size="12">
         <ion-label class="styName">{{ item.nombre}}</ion-label><br>
         <ion-label class="styPrice">{{ item.precio | currency:'USD':'symbol':'1.2-2'}}</ion-label><br>
-        <ion-label class="styCat">{{ item.tipo}}</ion-label><br>
         <ion-label class="styDes">Descripción</ion-label><br>
-        <ion-label class="styDesCr">{{ item.tipo }}</ion-label>
+        <ion-label class="styDesCr">{{ item.categoriaID }}</ion-label>
       </ion-col>
     </ion-row>
     <ion-row class="styRowB">
       <ion-col size="12">
         <br>
-        <button fill="solid" class="category-button">Sitio Oficial</button>
+        <button fill="solid" class="category-button">Agregar</button>
       </ion-col>
     </ion-row>
   </div>
