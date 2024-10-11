@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registrate',
   templateUrl: './registrate.page.html',
@@ -9,7 +11,7 @@ export class RegistratePage implements OnInit {
 
   email: string = '';
   password: string = '';
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,7 +31,7 @@ export class RegistratePage implements OnInit {
       if (respuesta.data.details) {
         console.log("Nuevo ususario usuario:", respuesta.data.details.details);
         //redireccionar a la página de inicio
-        window.location.href = '/login';
+        this.router.navigate(['/login']);
       } else {
         console.log("Error:", respuesta.error);
       }

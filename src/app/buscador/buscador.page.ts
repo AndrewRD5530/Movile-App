@@ -45,6 +45,7 @@ export class BuscadorPage implements OnInit {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
+    console.log("token:", token);
 
     const json = {
       keyWord: searchTerm,
@@ -94,12 +95,14 @@ export class BuscadorPage implements OnInit {
   }
 
   // Función para cerrar sesión (reemplazar con la lógica que desees)
-  logOut() {
-    //limpiar el token de local storage
+  async logOut() {
+    const access_token = localStorage.getItem('access_token');
+    console.log("Tokens:", access_token);
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('correo');
+    //redireccionar a la página de inicio
+    this.router.navigate(['/']);
     this.isPopoverOpen = false;
-    this.router.navigate(['/login']);
   }
 }
