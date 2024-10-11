@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,11 +10,11 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
   }
-   sleep(ms: number): Promise<void> {
+  sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   async onSubmit() {
@@ -34,18 +35,15 @@ export class LoginPage implements OnInit {
         const correo = respuesta.data.correo;
 
         //guardar en local storage
-        console.log("Tokens:", tokens);
-        console.log("Refresh:", refresh);
-        console.log("Correo:", correo);
+        console.log("access_token:", tokens);
         localStorage.setItem('access_token', tokens);
         localStorage.setItem('refresh_token', refresh);
         localStorage.setItem('correo', correo);
-        
         //esperar 1 segundo
         await this.sleep(2000);
 
         //redireccionar a la página de inicio
-        window.location.href = '/home';
+        this.router.navigate(['/home']);
       } else {
         console.log("Error:", respuesta.error);
       }
