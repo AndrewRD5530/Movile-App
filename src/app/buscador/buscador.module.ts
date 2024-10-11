@@ -8,13 +8,17 @@ import { BuscadorPageRoutingModule } from './buscador-routing.module';
 
 import { BuscadorPage } from './buscador.page';
 
+//importar el componente para mostrar el menú lateral
+import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BuscadorPageRoutingModule
+    BuscadorPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [BuscadorPage]
+  declarations: [BuscadorPage],
 })
 export class BuscadorPageModule {}

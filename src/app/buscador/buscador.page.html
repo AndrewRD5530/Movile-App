@@ -1,75 +1,9 @@
 <ion-content [fullscreen]="true">
   <ion-app>
-    <ion-menu contentId="main-content">
-      <ion-header>
-        <ion-toolbar color="light">
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-          <ion-title>SuperPrice</ion-title>
-          <ion-icon name="fast-food" color="warning" size="large" slot="end"></ion-icon>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content style="background-color: aliceblue !important;">
-        <ion-menu-toggle auto-hide="false">
-          <ion-list [inset]="true">
-            <ion-item color="medium" routerLink="/home" tab="home" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="home-outline" slot="start"></ion-icon>
-              <ion-label>Inicio</ion-label>
-            </ion-item>
-            <ion-item color="medium" routerLink="/buscador" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="pricetags" slot="start"></ion-icon>
-              <ion-label>Buscar</ion-label>
-            </ion-item>
-            <ion-item color="medium" routerLink="/promociones" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="pricetags" slot="start"></ion-icon>
-              <ion-label>Promociones</ion-label>
-            </ion-item>
-            <ion-item color="medium" routerLink="/cuenta" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="person-circle" slot="start"></ion-icon>
-              <ion-label>Cuenta</ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-menu-toggle>
-      </ion-content>
-    </ion-menu>
-    <div class="ion-page" id="main-content">
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-          <ion-title>
-            SuperPrice
-          </ion-title>
-          <ion-avatar aria-hidden="true" slot="end" (click)="openPopover($event)" class="flex " style="padding: 9px;">
-            <img alt="" src="https://img.freepik.com/premium-psd/user-3d-icon_642950-57.jpg" width="50px">
-          </ion-avatar>
-        </ion-toolbar>
-      </ion-header>
-      <!--poper para el usuario-->
-      <ion-popover  #popover [isOpen]="isPopoverOpen" (ionPopoverDidDismiss)="closePopover()">
-        <ng-template>
-          <ion-content>
-            <ion-list>
-              <ion-item [button]="true" [detail]="false">Cuenta</ion-item>
-              <ion-item [button]="true" [detail]="false" (click)="logOut()">Cerrar sesión</ion-item>
-              <!--
-              <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
-              <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
-                <ng-template>
-                  <ion-content>
-                    <ion-list>
-                      <ion-item [button]="true" [detail]="false">Nested option</ion-item>
-                    </ion-list>
-                  </ion-content>
-                </ng-template>
-              </ion-popover>-->
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-      <!--fin del poper-->
+    <!--Inicio del menu-->
+    <ion-content>
+      <app-side-menu></app-side-menu>
+    </ion-content>
       <ion-content>
         <ion-toolbar>
           <ion-grid [fixed]="true">
@@ -111,6 +45,5 @@
           </ion-row>
         </ion-grid>
       </ion-content>
-    </div>
   </ion-app>
 </ion-content>

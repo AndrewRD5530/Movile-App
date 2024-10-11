@@ -15,7 +15,6 @@ export class BuscadorPage implements OnInit {
   isLoading = false; // Estado de la barra de progreso
   isAlertOpen = false; // Estado de la alerta
   private searchSubject: Subject<string> = new Subject();
-  isPopoverOpen = false;
 
   constructor(private alertController: AlertController, private router: Router) {}
   @ViewChild('popover') popover: any;
@@ -85,24 +84,4 @@ export class BuscadorPage implements OnInit {
     await alert.present();
   }
 
-  openPopover(event: any) {
-    this.popover.event = event;
-    this.isPopoverOpen = true;
-  }
-  // Cerrar el popover
-  closePopover() {
-    this.isPopoverOpen = false;
-  }
-
-  // Función para cerrar sesión (reemplazar con la lógica que desees)
-  async logOut() {
-    const access_token = localStorage.getItem('access_token');
-    console.log("Tokens:", access_token);
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('correo');
-    //redireccionar a la página de inicio
-    this.router.navigate(['/']);
-    this.isPopoverOpen = false;
-  }
 }
