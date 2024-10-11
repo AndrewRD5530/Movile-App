@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { ProDescriptionPage } from './pro-description.page';
 
 const routes: Routes = [
@@ -12,6 +11,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class ProDescriptionPageRoutingModule {}
+export class ProDescriptionPageRoutingModule {
+  constructor() {
+    console.log("ProDescriptionPageRoutingModule loaded");
+  }
+}

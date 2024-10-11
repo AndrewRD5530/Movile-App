@@ -25,6 +25,7 @@ export class BuscadorPage implements OnInit {
     });
   }
 
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
@@ -69,7 +70,6 @@ export class BuscadorPage implements OnInit {
     }
   }
 
-  // Método para mostrar la alerta
   async showAlert(message: string) {
     const alert = await this.alertController.create({
       header: 'Atención',
@@ -80,5 +80,4 @@ export class BuscadorPage implements OnInit {
 
     await alert.present();
   }
-
 }

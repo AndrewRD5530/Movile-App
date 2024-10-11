@@ -132,8 +132,8 @@
         <ion-grid>
           <ion-row>
             <ion-list *ngFor="let product of products">
-              <ion-card routerLink="/pro-description/{{product.id}}">
-                <img alt="Silhouette of mountains" [src]="product.urlImagen" width="700%">
+              <ion-card>
+                <img alt="Silhouette of mountains" [src]="product.urlImagen" width="100%">
                 <ion-card-header>
                   <ion-card-title>{{product.nombre}}</ion-card-title>
                   <ion-card-subtitle>Producto</ion-card-subtitle>
@@ -141,15 +141,15 @@
                 <ion-card-content>
                   Here's a small text description for the card content. Nothing more, nothing less.
                 </ion-card-content>
-                <div class="ion-padding flex ion-justify-content-between ">
-                  <ion-button size="small" fill="outline" color="warning">
+                <div class="ion-padding flex ion-justify-content-between">
+                  <ion-button size="small" fill="outline" color="warning" [routerLink]="['/pro-description', product.id]">
                     <ion-icon name="cart" slot="start"></ion-icon>
-                      Ver producto
+                    Ver producto
                   </ion-button>
                   <ion-badge color="success" slot="end" class="ion-align-center ion-padding">$ {{product.precio}}</ion-badge>
                 </div>
               </ion-card>
-            </ion-list>
+            </ion-list>            
           </ion-row>
         </ion-grid>
       </ion-content>

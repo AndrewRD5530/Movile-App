@@ -90,7 +90,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6" size-md="4" size-lg="2" *ngFor="let item of productos">
-          <ion-card>
+          <ion-card [routerLink]="['/pro-description', item.id]">
             <img alt="Silhouette of mountains" [src]="item.urlImagen"  style="background-color: aqua;"/>
             <ion-card-header>
               <ion-card-title>{{item.precio}}</ion-card-title>
@@ -100,6 +100,7 @@
               {{item.nombre}}
             </ion-card-content>
           </ion-card>
+          
         </ion-col>
       </ion-row>
     </ion-grid>

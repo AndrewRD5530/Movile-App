@@ -24,9 +24,9 @@ const routes: Routes = [
     loadChildren: () => import('./buscador/buscador.module').then(m => m.BuscadorPageModule)
   },
   {
-    path: 'pro-description',
+    path: 'pro-description/:id',
     loadChildren: () => import('./pro-description/pro-description.module').then(m => m.ProDescriptionPageModule)
-  },
+  }
 ];
 
 @NgModule({
