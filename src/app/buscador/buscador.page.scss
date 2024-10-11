@@ -12,6 +12,9 @@ ion-progress-bar {
   transition: transform 0.2s ease-in-out; /* Transición para animación */
 }
 
+ion-searchbar  {
+  --border-radius: 25px !important;
+}
 .tab-bar-custom ion-tab-button:active {
   transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
