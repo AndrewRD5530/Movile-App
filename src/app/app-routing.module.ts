@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'pro-description/:id',
     loadChildren: () => import('./pro-description/pro-description.module').then(m => m.ProDescriptionPageModule)
+  },  {
+    path: 'ofertas',
+    loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
   }
+
 ];
 
 @NgModule({
