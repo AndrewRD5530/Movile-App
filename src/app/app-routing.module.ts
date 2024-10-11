@@ -26,9 +26,16 @@ const routes: Routes = [
   {
     path: 'pro-description/:id',
     loadChildren: () => import('./pro-description/pro-description.module').then(m => m.ProDescriptionPageModule)
-  },  {
+  },
+  {
+
     path: 'cuenta',
     loadChildren: () => import('./cuenta/cuenta.module').then( m => m.CuentaPageModule)
+   },
+   }
+    path: 'ofertas',
+    loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
+
   }
 
 ];

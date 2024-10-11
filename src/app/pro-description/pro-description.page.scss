@@ -1,13 +1,13 @@
 ion-content {
-    --ion-background-color: #0c0805;
+    --ion-background-color: rgba(161, 255, 159, 0.719);
   }
 .styROW {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
-    background-color: #673e28; 
-    border: 10px solid #0c0805;
+    background-color: white; 
+    border: 10px solid rgba(116, 194, 114, 0.5);
     border-radius: 0 0 45px 45px;
 
   }
@@ -25,10 +25,11 @@ ion-content {
     width: 350px;
     height: 350px;
     display: flex;
+    border-radius: 50%;
   }
 .styButton{
     width: 10%;
-    background-color: #673e28;
+    background-color: #ff831e;
     color: white;
     font-size: 2rem;
     border-radius: 50%;
@@ -42,7 +43,7 @@ ion-content {
     background-color: transparent;
   }
   .CardProduct{
-    background-color: #673e28;
+    background-color: white;
     margin: 3%;
     border-radius: 30px;
     display: flex;  
@@ -71,21 +72,23 @@ ion-content {
 }
 .styDes{
     margin-left: 20px;
-    color: #adadad;
+    font-size:  1.2rem;
+    color: #ff7300;
 }
 .styDesCr{
     margin-left: 20px;
 }
 .category-button {
     width: 180px;
-    color: #0c0805; /* Color de texto */
-    background-color: #e6c044;
+    color: #f7f7f7; /* Color de texto */
+    background-color: #ff831e;
     padding: 10px 20px; /* Espaciado interno */
+    border: 3px solid; /* Bordes por defecto */
     border-radius: 15px; /* Bordes redondeados */
     font-size: 1rem; /* Tamaño de fuente */
     cursor: pointer; /* Cambia el cursor al pasar el ratón */
     transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
-    border-color: #e0e0e0;
+    border-color: #ffffff;
    margin-left: 50%;
    font-weight: bold;
    letter-spacing: 2px;

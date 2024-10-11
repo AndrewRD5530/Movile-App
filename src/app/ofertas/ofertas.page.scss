@@ -1,0 +1,131 @@
+
+.container11{
+    background-color: #529e72;
+  
+  }
+  
+  .imagen-responsiva {
+    max-width: 100%; /* La imagen nunca será más ancha que el contenedor */
+    height: auto;    /* Mantiene la proporción de la imagen */
+    display: block;  /* Evita espacios blancos alrededor de la imagen */
+  }
+  
+  .banner1 {
+    
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .imagen-responsiva {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;  /* Bordes redondeados para la imagen */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para hacerla resaltar */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .imagen-responsiva:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al hacer hover */
+  }
+  
+  
+  ion-menu::part(backdrop) {
+    background-color: rgba(116, 194, 114, 0.5);
+  }
+  
+  ion-menu::part(container) {
+    border-radius: 0 20px 20px 0;
+  
+    box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+  }
+  
+  .tab-bar-custom {
+    background-color: #673e28; /* Color de fondo personalizado */
+    color: #b7b4b4; /* Color del texto */
+  }
+  
+  .tab-bar-custom ion-tab-button {
+    --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
+    --color: #0b0b0b; /* Color por defecto de los iconos */
+    --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
+    transition: transform 0.2s ease-in-out; /* Transición para animación */
+  }
+  
+  .tab-bar-custom ion-tab-button:active {
+    transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
+  }
+  
+  .custom-card {
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; 
+  }
+  
+  .card-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Ajusta según la altura deseada */
+  }
+  
+  .product-image {
+    width: 20%;
+    height: 20%;
+    object-fit: contain; /* Ajusta la imagen para que se contenga dentro del contenedor */
+  }
+  
+  .product-price, .product-subtitle, .product-content {
+    text-align: center;
+  }
+  
+  
+  .custom-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .product-image {
+   
+    width: 50%;
+    height: 7em; 
+    object-fit: cover;
+    
+  }
+  
+  .product-price {
+    font-size: 1.5rem;
+    color: #f53d3d;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .product-subtitle {
+    font-size: 0.9rem;
+    color: #8c8c8c;
+    text-align: center;
+  }
+  
+  .product-content {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  ion-card {
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+  }
+  
+  .menu-encabezado{
+    background-color: white;
+  
+  }
+  
+  
+  
+  
+  
+  

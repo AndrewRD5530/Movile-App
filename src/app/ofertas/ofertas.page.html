@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="container11">
+  <ion-menu contentId="main-content" >
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu Content</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+ 
+      <ion-list [inset]="true">
+       
+        <ion-item color="medium" routerLink="/home" tab="home" routerDirection="root" routerLinkActive="active-link">
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-item>
+        <ion-item color="medium" routerLink="/buscador" routerDirection="root" routerLinkActive="active-link">
+          <ion-icon name="pricetags" slot="start"></ion-icon>
+          <ion-label>Buscar</ion-label>
+        </ion-item>
+        <ion-item color="medium" routerLink="/promociones" routerDirection="root" routerLinkActive="active-link">
+          <ion-icon name="pricetags" slot="start"></ion-icon>
+          <ion-label>Promociones</ion-label>
+        </ion-item>
+        <ion-item color="medium" routerLink="/cuenta" routerDirection="root" routerLinkActive="active-link">
+          <ion-icon name="person-circle" slot="start"></ion-icon>
+          <ion-label>Cuenta</ion-label>
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ion-menu >
+  <div class="ion-page" id="main-content">
+    <ion-header class="menu-encabezado">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="font-family: Georgia, 'Times New Roman', Times, serif;"><b></b></ion-title>
+      </ion-toolbar>
+    </ion-header>
+   
+  </div>
+  <ion-grid>
+    <ion-row class="container11">
+      <ion-col>
+        <h1 style="text-align: center; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: aliceblue;">
+          <b>Mejores ofertas</b>
+        </h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row class="container11">
+      <ion-col size="6" *ngFor="let item of productos">
+        <ion-card class="custom-card" [routerLink]="['/pro-description', item.id]">
+          <div class="card-img-container">
+            <img alt="Imagen del producto" [src]="item.urlImagen" class="product-image"/>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="product-price">${{item.precio}}</ion-card-title>
+            <ion-card-subtitle class="product-subtitle">Oferta Especial</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content class="product-content">
+            {{item.nombre}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <br><br>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" routerLink="/home">
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-label>Inicio</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="search" routerLink="/buscador">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-label>Buscar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="promotions">
+    <ion-icon name="pricetags-outline"></ion-icon>
+    <ion-label>Promociones</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="account" routerLink="/cuenta">
+    <ion-icon name="person-outline"></ion-icon>
+    <ion-label>Cuenta</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
