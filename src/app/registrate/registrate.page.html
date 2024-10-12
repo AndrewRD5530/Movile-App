@@ -8,7 +8,15 @@
 
     <ion-list class="input-container">
       <ion-item>
-        <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-icon name="person-add-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input [(ngModel)]="nombre" label="Nombre:" placeholder="Nombre" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="people-circle-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input [(ngModel)]="apellido" label="Apellido:" placeholder="Apellido" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail-unread-outline" slot="start" class="input-icon"></ion-icon>
         <ion-input [(ngModel)]="email" label="Correo:" type="email" placeholder="correo@ejemplo.com"></ion-input>
       </ion-item>
       <ion-item>
@@ -16,6 +24,7 @@
         <ion-input [(ngModel)]="password" label="Contraseña:" placeholder="********" type="password"></ion-input>
         <ion-icon name="eye-outline" slot="end" class="show-hide"></ion-icon>
       </ion-item>
+
     </ion-list>
     <ion-button expand="block" class="login" (click)="onSubmit()">Registrate!</ion-button>
 
