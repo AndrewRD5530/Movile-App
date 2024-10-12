@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 export class CuentaPage implements OnInit {
   isPopoverOpen = false;
   isMenuOpen = false;
-  usuario: any[] = [];
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
   constructor(private router: Router) { }
   @ViewChild('popover') popover: any;
 
@@ -35,8 +37,11 @@ export class CuentaPage implements OnInit {
       const response = await axios.post(url, json, { headers});
       const respuesta = response.data;
       if (respuesta.data) {
-        const data = respuesta.data.details;
-        this.usuario = data;
+        const data = respuesta.data.details.user;
+        this.nombre = data.nombre;
+        this.apellido = data.apellido;
+        this.email = data.correo;
+        console.log("Datos:", this.nombre, this.apellido, this.email);
       } else {
         console.log("Error:", respuesta.error);
       }
