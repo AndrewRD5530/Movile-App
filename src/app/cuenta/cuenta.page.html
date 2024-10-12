@@ -70,17 +70,17 @@
           </ion-content>
         </ng-template>
       </ion-popover>
-      <ion-card class="color-card">
+      <ion-card class="color-card" >
         <div class="color-fondo">
           <img alt="Silhouette of user" src="../../assets/user-3d-icon_642950-57-removebg-preview.png">
         </div>
         <div>
           <ion-card-header>
-            <ion-card-title class="text-usuario">Usuario</ion-card-title>
+            <ion-card-title class="text-usuario">{{nombre}}</ion-card-title>
           </ion-card-header>
           <ion-card-content class="ion-padding" style="padding-bottom: 50px; margin-bottom: 50px;">
             <ion-card-content class="color-texto">
-              Here's a small text description for the card content. Nothing more, nothing less.
+              {{apellido}}
             </ion-card-content>
             <ion-card-content>
               <ion-button expand="block" fill="" color="warning">
