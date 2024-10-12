@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild  } from '@angular/core';
+import axios from 'axios';
+import { debounceTime } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-ofertas',
   templateUrl: './ofertas.page.html',
   styleUrls: ['./ofertas.page.scss'],
 })
 export class OfertasPage implements OnInit {
+  isPopoverOpen = false;
+  isMenuOpen = false;
   productos: any[] = [
     {
       id: 1,
@@ -58,7 +64,29 @@ export class OfertasPage implements OnInit {
     // Añadir más productos si es necesario
   ];
 
-  constructor() { }
+  @ViewChild('popover') popover: any;
+  constructor(private router: Router) { }
 
   ngOnInit() { }
+
+  openPopover(event: any) {
+    this.popover.event = event;
+    this.isPopoverOpen = true;
+  }
+  // Cerrar el popover
+  closePopover() {
+    this.isPopoverOpen = false;
+  }
+ 
+  // Función para cerrar sesión (reemplazar con la lógica que desees)
+  async logOut() {
+    const access_token = localStorage.getItem('access_token');
+    console.log("Tokens:", access_token);
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('correo');
+    //redireccionar a la página de inicio
+    this.router.navigate(['/']);
+    this.isPopoverOpen = false;
+  }
 }

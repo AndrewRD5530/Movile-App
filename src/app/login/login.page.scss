@@ -14,15 +14,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5ebe0; 
     padding: 20px;
-    background: linear-gradient(135deg, #e6ccb2, #f5ebe0);
+    background-color:#9affa6;
 }
 
 //Estilo para el título 
 h1 {
+    
     font-size: 2.1rem;
-    font-weight: bold;
+    font-weight: 900;
     color: #4e342e; 
     text-align: center;
     margin-bottom: 50px;
@@ -30,7 +30,7 @@ h1 {
     letter-spacing: 2px;
     position: relative;
     z-index: 1;
-    font-family: 'Georgia', serif;
+    font-family: "ABeeZee", sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
@@ -52,7 +52,7 @@ h1 {
 
 //Botón de login 
 ion-button.login {
-    --background: #6d4c41;
+    --background: #ff541b;
     --color: #fff; 
     margin-bottom: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
@@ -62,7 +62,7 @@ ion-button.login {
 
 
 .color-login {
-    --background: #5d4037;
+    --background: #9affa6;
     --color: #fff;
 }
 
