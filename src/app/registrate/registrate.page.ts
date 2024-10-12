@@ -11,6 +11,8 @@ export class RegistratePage implements OnInit {
 
   email: string = '';
   password: string = '';
+  nombre: string = '';
+  apellido: string = '';
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -23,7 +25,9 @@ export class RegistratePage implements OnInit {
     const url = 'http://127.0.0.1:8000/api/usuario/crear';
     const Credenciales = {
       "correo": this.email,
-      "password": this.password
+      "password": this.password,
+      "nombre": this.nombre,
+      "apellido": this.apellido
     };
     try {
       const response = await axios.post(url, Credenciales);
