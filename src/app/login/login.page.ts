@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
+import { IonModal } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,12 +13,19 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
-  constructor( private router: Router) { }
-
+  nombre: string = '';
+  apellido: string = '';
+  isToastOpen: boolean = false;
+  IsModalOpen: boolean = false;
+  constructor( private router: Router, private toastController: ToastController,) { }
   ngOnInit() {
   }
   sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  setOpenModal(isOpen: boolean) {
+    this.IsModalOpen = isOpen;
+
   }
   async onSubmit() {
     console.log("Email:", this.email);
@@ -40,18 +50,76 @@ export class LoginPage implements OnInit {
         localStorage.setItem('refresh_token', refresh);
         localStorage.setItem('correo', correo);
         localStorage.setItem('usuarioID', usuarioID);
-
-        //esperar 1 segundo
-        await this.sleep(2000);
-
+        this.IsModalOpen = false;
         //redireccionar a la página de inicio
         this.router.navigate(['/home']);
       } else {
-        console.log("Error:", respuesta.error);
+        const position = 'top';
+        const toast = await this.toastController.create({
+          message: 'Usuario o contraseña son incorrectos',
+          duration: 1500,
+          position: position,
+          icon: 'warning',
+          color: 'danger',
+        });
+        await toast.present();
+        this.IsModalOpen = false;
+        this.email = '';
+        this.password = '';
+        this.nombre = '';
+        this.apellido = '';
       }
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
+      this.IsModalOpen = false;
     }
   }
 
+  async onRegistrar() {
+    // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
+    const url = 'http://127.0.0.1:8000/api/usuario/crear';
+    const Credenciales = {
+      "correo": this.email,
+      "password": this.password,
+      "nombre": this.nombre,
+      "apellido": this.apellido
+    };
+    try {
+
+      const response = await axios.post(url, Credenciales);
+      const respuesta = response.data;
+      if (respuesta.data.details) {
+        console.log("Nuevo ususario usuario:", respuesta.data.details.details);
+        // oculatar el modal de ionic
+        this.IsModalOpen = false;
+        this.email = '';
+        this.password = '';
+        this.nombre = '';
+        this.apellido = '';
+        const position = 'top';
+        const toast = await this.toastController.create({
+          message: 'usuario creado exitosamente',
+          duration: 1500,
+          position: position,
+          icon: 'success',
+          color: 'success',
+        });
+        await toast.present();
+      } else {
+        console.log("Error:", respuesta.error);
+        this.IsModalOpen = false;
+        this.email = '';
+        this.password = '';
+        this.nombre = '';
+        this.apellido = '';
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+      this.IsModalOpen = false;
+      this.email = '';
+      this.password = '';
+      this.nombre = '';
+      this.apellido = '';
+    }
+  }
 }
