@@ -32,7 +32,36 @@ ion-toolbar{
   --ion-color-shade: #000000;
   --ion-color-tint: #ffffff;
 }
+.ion-color-select-color {
+  --ion-color-base: #FFA451;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: hsl(0, 0%, 100%);
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+}
 
+.ion-color-btn-color {
+  --ion-color-base: #FFA451;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #000000;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+  border-radius: 5px !important;
+}
+
+.ion-color-icon-inverse {
+  --ion-color-base: #ffffff;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #000000;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+}
+.ion-size-medium {
+  --ion-font-size: 0.8rem;
+}
 ion-title {
   font-family: "Bee Gothic", cursive;
   font-weight: 400;
@@ -43,7 +72,7 @@ ion-title {
 .texto-info{
   font-family: "Bee Gothic", cursive;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 0px;
   color: #27214D;
 }
@@ -82,12 +111,39 @@ ion-content{
 }
 .border-color{
   border: 1px solid #FFA451;
-  border-radius: 10px !important;
+  border-radius: 20px !important;
 }
 .mg-button{
   margin-top: 10px;
 }
+.mg-rigth{
+  margin-right: 10px;
+}
 .text-family{
   font-family: "Bee Gothic", cursive;
-  font-weight: 500;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.color-btn-text{
+  color: #fff;
+}
+ion-card{
+  --background: #ffffff;
+  box-shadow: none;
+  border: #ffa5518b 1px solid;
+  border-radius: 20px;
+}
+ion-list{
+  background: #ffffff;
+}
+
+ion-card-title{
+  font-family: "Bee Gothic", cursive;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+price-info{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
 }

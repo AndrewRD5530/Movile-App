@@ -64,7 +64,7 @@
       </ion-popover>
       <!--fin del poper-->
       <ion-content class="ion-padding">
-        <ion-title class="texto-info">Hola {{Usuario}} , ¿qué quieres hacer? <br> Puedes buscar productos en la barra de busqueda</ion-title>
+        <ion-title class="texto-info">Hola <b>{{Usuario}}</b> , ¿qué quieres hacer? <br> Puedes buscar productos en la barra de busqueda</ion-title>
         <ion-toolbar style="z-index: 20;">
           <ion-grid [fixed]="true">
             <ion-row class="ion-justify-content-center" style="margin-top: 10px;">
@@ -81,24 +81,42 @@
           <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
           <ion-label>No se encontraron productos</ion-label>
         </ion-alert>
-        <ion-grid>
-          <ion-row>
-            <ion-list *ngFor="let product of products">
+        <ion-grid class="ion-justify-content-center">
+          <ion-row class="flex ion-justify-content-center">
+            <ion-title class="texto-info">Su resultado.</ion-title>
+            <ion-list *ngFor="let product of products" class="ion-justify-content-center">
               <ion-card>
-                <img alt="Silhouette of mountains" [src]="product.urlImagen" width="700%">
+                <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen" width="278px">
                 <ion-card-header>
-                  <ion-card-title>{{product.nombre}}</ion-card-title>
-                  <ion-card-subtitle>Producto</ion-card-subtitle>
+                  <ion-card-title class="text-color">{{product.nombre}}</ion-card-title>
                 </ion-card-header>
-                <ion-card-content>
-                  Here's a small text description for the card content. Nothing more, nothing less.
+                <ion-card-content class="ion-padding">
+                  <ion-chip color="success">
+                    <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+                    <ion-label class="text-family text-color">{{product.precio}}</ion-label>
+                    <ion-icon name="close"></ion-icon>
+                  </ion-chip>
+                  <ion-chip color="success">
+                    <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+                    <ion-label class="text-family text-color">En stock</ion-label>
+                    <ion-icon name="close"></ion-icon>
+                  </ion-chip>
                 </ion-card-content>
                 <div class="ion-padding flex ion-justify-content-between ">
-                  <ion-button size="small" fill="outline" color="warning" [routerLink]="['/pro-description', product.id]">
-                    <ion-icon name="cart" slot="start"></ion-icon>
-                      Ver producto
+                  <ion-button size="small" color="btn-color" [routerLink]="['/pro-description', product.id]">
+                    <ion-icon name="cart" slot="start" color="icon-inverse" size="medium"></ion-icon>
+                    <ion-label class="text-family color-btn-text ">Ver producto</ion-label>
                   </ion-button>
-                  <ion-badge color="success" slot="end" class="ion-align-center ion-padding">$ {{product.precio}}</ion-badge>
+                  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+                    <ion-fab-button color="select-color">
+                      <ion-icon name="add"></ion-icon>
+                    </ion-fab-button>
+                    <ion-fab-list side="top">
+                      <ion-fab-button color="select-color">
+                        <ion-icon name="bag-add"></ion-icon>
+                      </ion-fab-button>
+                    </ion-fab-list>
+                  </ion-fab>
                 </div>
               </ion-card>
             </ion-list>
