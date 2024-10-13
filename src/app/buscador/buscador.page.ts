@@ -16,7 +16,8 @@ export class BuscadorPage implements OnInit {
   isAlertOpen = false; // Estado de la alerta
   private searchSubject: Subject<string> = new Subject();
   isPopoverOpen = false;
- 
+
+  Usuario = localStorage.getItem('nombre');
   constructor(private alertController: AlertController, private router: Router) {}
   @ViewChild('popover') popover: any;
   ngOnInit() {

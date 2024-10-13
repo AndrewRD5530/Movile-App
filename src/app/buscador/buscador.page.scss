@@ -5,54 +5,89 @@ ion-progress-bar {
   --background: #687fe9;
   --progress-background: #09c567;
 }
-.tab-bar-custom ion-tab-button {
-  --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-  --color: #000000; /* Color por defecto de los iconos */
-  --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
-  transition: transform 0.2s ease-in-out; /* Transición para animación */
+ion-content{
+  --background: #ffffff;
+}
+ion-searchbar  {
+  --border-radius: 10px !important;
+  --background: #dee0e9;
+  --color: #86869E;
+  box-shadow: none;
+  z-index: 10;
+}
+ion-toolbar{
+  --background: #ffffff;
+  --color: #000000;
 }
 
-ion-searchbar  {
-  --border-radius: 25px !important;
-}
 .tab-bar-custom ion-tab-button:active {
   transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
 
-/* En tu archivo de estilos CSS */
-.custom-card {
-  background-color: white !important; /* Asegura que el fondo sea blanco */
-  color: black !important; /* Asegura que el texto sea negro */
+.ion-color-icon-color {
+  --ion-color-base: #FFA451;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #000000;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
 }
 
-/* Asegura que todos los elementos de texto dentro de la tarjeta sean de color negro */
-.custom-card ion-card-header,
-.custom-card ion-card-content,
-.custom-card ion-label {
-  color: black !important; /* Aplica color negro a los encabezados y etiquetas */
+ion-title {
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding: 0px;
 }
 
-/* Si deseas personalizar aún más el estilo de la tarjeta, puedes agregar más reglas aquí */
-.custom-card ion-card-header {
-  border-bottom: 1px solid #ccc; /* Ejemplo: añade un borde inferior al encabezado */
+.texto-info{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding: 0px;
+  color: #27214D;
 }
 
-.custom-card ion-card-title {
-  font-weight: bold; /* Ejemplo: hace que el título sea más grueso */
+.popover-color{
+  background: #ffffff !important;
 }
 
-.custom-card ion-card-content {
-  padding: 16px; /* Asegura suficiente espacio en el contenido */
+ion-item{
+  --background: transparent !important;
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 
-
-/* En tu archivo de estilos CSS */
-.description-column {
-  background-color: transparent !important; /* Asegura que el fondo sea transparente */
+.content-border{
+  border: 1px solid #FFA451;
+  background-color: #FFA451;
 }
 
-/* Asegura que los elementos dentro de la columna mantengan el color negro */
-.description-column ion-label {
-  color: black !important; /* Aplica color negro a las etiquetas de texto */
+ion-menu{
+  --background-color: #ffffff;
 }
 
+ion-menu::part(container) {
+  box-shadow: 4px 0px 16px #ffa551a5;
+  background-color: #ffffff !important;
+}
+
+ion-content{
+  --background-color: #ffffff;
+}
+
+.text-color{
+  color: #27214D;
+}
+.border-color{
+  border: 1px solid #FFA451;
+  border-radius: 10px !important;
+}
+.mg-button{
+  margin-top: 10px;
+}
+.text-family{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 500;
+}
