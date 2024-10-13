@@ -44,12 +44,14 @@ export class LoginPage implements OnInit {
         const refresh = respuesta.data.refresh;
         const correo = respuesta.data.correo;
         const usuarioID = respuesta.data.usuarioID;
+        const nombre = respuesta.data.nombre;
         //guardar en local storage
         console.log("access_token:", tokens);
         localStorage.setItem('access_token', tokens);
         localStorage.setItem('refresh_token', refresh);
         localStorage.setItem('correo', correo);
         localStorage.setItem('usuarioID', usuarioID);
+        localStorage.setItem('nombre', nombre);
         this.IsModalOpen = false;
         //redireccionar a la página de inicio
         this.router.navigate(['/home']);
