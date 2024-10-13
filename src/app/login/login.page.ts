@@ -63,6 +63,11 @@ export class LoginPage implements OnInit {
           color: 'danger',
         });
         await toast.present();
+        this.IsModalOpen = false;
+        this.email = '';
+        this.password = '';
+        this.nombre = '';
+        this.apellido = '';
       }
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
@@ -91,6 +96,15 @@ export class LoginPage implements OnInit {
         this.password = '';
         this.nombre = '';
         this.apellido = '';
+        const position = 'top';
+        const toast = await this.toastController.create({
+          message: 'usuario creado exitosamente',
+          duration: 1500,
+          position: position,
+          icon: 'success',
+          color: 'success',
+        });
+        await toast.present();
       } else {
         console.log("Error:", respuesta.error);
         this.IsModalOpen = false;
