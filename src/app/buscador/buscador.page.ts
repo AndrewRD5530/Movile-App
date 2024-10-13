@@ -24,7 +24,7 @@ export class BuscadorPage implements OnInit {
     this.searchSubject.pipe(debounceTime(500)).subscribe((searchTerm) => {
       this.getProducts(searchTerm);
     });
-    this.searchProducts(event);
+    //this.searchProducts(event);
   }
  
   toggleMenu() {
@@ -32,8 +32,8 @@ export class BuscadorPage implements OnInit {
   }
  
   searchProducts(event: any) {
-    //const searchTerm = event.target.value.trim();
-    const searchTerm = "soya";
+    const searchTerm = event.target.value.trim();
+    //const searchTerm = "soya";
     if (searchTerm) {
       this.isLoading = true; // Mostrar la barra de progreso mientras se busca
       this.searchSubject.next(searchTerm);
