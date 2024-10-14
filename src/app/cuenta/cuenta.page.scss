@@ -3,7 +3,7 @@ ion-progress-bar {
   --progress-background: #09c567;
 }
 ion-content {
-  --background: #FFA451;
+  --background: #fff;
 }
 ion-searchbar {
   --border-radius: 10px !important;
@@ -20,7 +20,9 @@ ion-toolbar {
 .tab-bar-custom ion-tab-button:active {
   transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
-
+.color{
+    background-color: #FFA451;
+}
 .ion-color-icon-color {
   --ion-color-base: #ffa451;
   --ion-color-base-rgb: 255, 255, 255;
@@ -41,11 +43,14 @@ ion-toolbar {
 .ion-color-btn-color {
   --ion-color-base: #ffa451;
   --ion-color-base-rgb: 255, 255, 255;
-  --ion-color-contrast: #000000;
+  --ion-color-contrast: #fff;
   --ion-color-contrast-rgb: 0, 0, 0;
   --ion-color-shade: #000000;
   --ion-color-tint: #ffffff;
-  border-radius: 5px !important;
+    border-radius: 5px !important;
+    font-family: "Bee Gothic", cursive;
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .ion-color-icon-inverse {
@@ -134,7 +139,6 @@ ion-card {
   border: #ffa5518b 1px solid;
   border-radius: 20px 20px 0px 0px;
   margin: 0;
-  height: 100%;
 }
 
 .margin-0{
@@ -150,9 +154,30 @@ ion-list {
 ion-card-title {
   font-family: "Bee Gothic", cursive;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 32px;
+  color: #27214D;
+  text-transform: capitalize;
 }
 price-info {
   font-family: "Bee Gothic", cursive;
   font-weight: 400;
+}
+
+.style-text-subtitle{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: underline #FFA451;
+}
+.chip-text{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 600;
+  font-size: 11px;
+  color: #27214D;
+}
+.text-content-info{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 16px;
+  color: #27214D;
 }

@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content class="color" [fullscreen]="true">
   <ion-app>
     <ion-menu contentId="main-content">
       <ion-header>
@@ -10,7 +10,7 @@
           <ion-icon name="fast-food" color="icon-color" size="large" slot="end" style="padding: 9px;"></ion-icon>
         </ion-toolbar>
       </ion-header>
-      <ion-content style="background-color: #ffffff !important;">
+      <ion-content>
         <ion-list [inset]="true" style="background-color: #ffffff !important;" >
           <ion-item class="text-color border-color mg-button" lines="none" routerLink="/home">
             <ion-icon name="restaurant" color="icon-color" slot="start" size="large"></ion-icon>
@@ -63,14 +63,41 @@
         </ng-template>
       </ion-popover>
       <!--fin del poper-->
-      <ion-content class="margin-0">
-        <img src="../../assets/user-3d-icon_642950-57-removebg-preview.png" alt="Silhouette of user" class="user-image bg-color-base">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="texto-info">{{nombre}}</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-content>
+      <div class="color">
+        <img src="../../assets/user-3d-icon_642950-57-removebg-preview.png" alt="Silhouette of user" class="user-image">
+      </div>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="text-user-card ion-padding">{{nombre}} {{apellido}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-padding ">
+          <ion-chip color="success" class="ion-margin-bottom">
+            <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+            <ion-label class="text-family text-color">tu información</ion-label>
+          </ion-chip>
+          <hr>
+          <ion-card-subtitle class="ion-padding text-color style-text-subtitle"> Mas información de tu cuenta </ion-card-subtitle>
+          <ion-card-content class="ion-padding text-content-info">
+            Todos tus datos de cuenta en SuperPrice <br>
+            <ion-chip color="success" class="ion-margin-bottom">
+              <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+              <ion-label class="chip-text text-color">{{email}}</ion-label>
+            </ion-chip>
+            <ion-chip color="success" class="ion-margin-bottom">
+              <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+              <ion-label class="chip-text text-color">{{nombre}} / {{apellido}}</ion-label>
+            </ion-chip>
+            <hr>
+            <ion-card-content class="flex ion-justify-content-between" style="margin-bottom: 30px;">
+              <ion-button color="btn-color" class="btn-text" (click)="logOut()">
+                <ion-icon name="exit" slot="start"></ion-icon>
+                Salir
+              </ion-button>
+              <ion-button color="btn-color" class="btn-text"> Ver tu carrito</ion-button>
+            </ion-card-content>
+          </ion-card-content>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-app>
 </ion-content>
