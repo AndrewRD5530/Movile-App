@@ -4,6 +4,8 @@ import { debounceTime } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
+
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',
@@ -15,11 +17,15 @@ export class CuentaPage implements OnInit {
   nombre: string = '';
   apellido: string = '';
   email: string = '';
-  constructor(private router: Router) { }
+  carritoProductos:any[] =[];
+  total = 0;
+  constructor(private router: Router, private cartService: CartService) { }
   @ViewChild('popover') popover: any;
 
   ngOnInit() {
     this.GetInfoUsuario();
+    this.carritoProductos = this.cartService.getCartItems();
+    this.total = this.cartService.getTotalProducts();
   }
 
   async GetInfoUsuario() {
