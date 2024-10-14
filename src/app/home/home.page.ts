@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
-
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  
+
 })
 export class HomePage {
 
   productos: any[] = []
   categorias: any[] = []
   isPopoverOpen = false;
-  constructor(private router: Router) {}
+  total = 0;
+  carritoProductos:any[] =[];
+  constructor(private router: Router, private cartService: CartService) {}
 
   isMenuOpen = false; // Variable para manejar el estado del menú
 
@@ -71,4 +73,11 @@ export class HomePage {
       console.error("Error:", error);
     }
   }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    this.carritoProductos = this.cartService.getCartItems();
+    this.total = this.cartService.getTotalProducts();
+  }
+
 }
