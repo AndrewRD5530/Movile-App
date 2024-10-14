@@ -1,13 +1,99 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>carrito</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">carrito</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-app>
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="light">
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>SuperPrice</ion-title>
+          <ion-icon name="fast-food" color="icon-color" size="large" slot="end" style="padding: 9px;"></ion-icon>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content style="background-color: #ffffff !important;">
+        <ion-list [inset]="true" style="background-color: #ffffff !important;" >
+          <ion-item class="text-color border-color mg-button"  tab="home" lines="none" routerDirection="root" routerLink="/home">
+            <ion-icon name="restaurant" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Home</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" tab="buscador" lines="none" routerDirection="root" routerLink="/buscador">
+            <ion-icon name="search-circle" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Buscar</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" tab="cuenta" lines="none" routerDirection="root" routerLink="/cuenta">
+            <ion-icon name="sparkles" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Mi cuenta</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button"  tab="carrito" lines="none" routerDirection="root" routerLink="/carrito">
+            <ion-icon name="albums" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Mi Carrito</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" tab="ofertas" lines="none" routerDirection="root" routerLink="/ofertas">
+            <ion-icon name="storefront" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Ofertas</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" tab="ofertas" lines="none" routerDirection="root" (click)="logOut()">
+            <ion-icon name="exit" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Salir</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-content class="ion-page" id="main-content">
+      <ion-header class="ion-no-border">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-chip color="success" slot="end">
+            <ion-icon name="cart"  color="success"></ion-icon>
+            <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
+          </ion-chip>
+          <ion-chip color="warning" slot="end">
+            <ion-icon name="wallet"  color="icon-color"></ion-icon>
+            <ion-label>Total: {{total}}</ion-label>
+          </ion-chip>
+        </ion-toolbar>
+      </ion-header>
+
+      <div class="color flex ion-justify-content-center ion-align-items-center" style="height: 15%;">
+        <div class="ion-padding ">
+          <ion-title class="texto-info ion-text-center">Mi carrito</ion-title>
+        </div>
+      </div>
+      <ion-content class="size-content">
+        <ion-list [inset]="true" *ngFor="let item of carritoProductos">
+          <ion-item >
+            <!--imagen del producto-->
+            <div style="background-color: #FEF0F0;" [routerLink]="['/pro-description', item.id]" class="ion-margin-vertical">
+              <img  class="product-image" [src]="item.urlImagen" width="64px" height="64px">
+            </div>
+            <ion-label class="text-color text-font-family" style="margin-left: 10px;">{{item.nombre}}</ion-label>
+            <ion-chip color="danger">${{item.precio}}</ion-chip>
+            <ion-button color="btn-eliminar" (click)="removeItem(item.id)">Eliminar</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      <ion-footer class="ion-no-border">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="6" size-md="4" offset-md="1" offset-lg="2">
+              <div>
+                <ion-label class="total-info-text">Total</ion-label>
+                <p class="total-text">${{total}}</p>
+              </div>
+            </ion-col>
+            <ion-col size="6" size-md="4" offset-md="1" offset-lg="1" class="ion-text-right">
+              <ion-button color="btn-eliminar" expand="block" class="ion-padding">
+                Eliminar
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-footer>
+    </ion-content>
+  </ion-app>
 </ion-content>
