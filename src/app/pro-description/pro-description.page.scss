@@ -1,5 +1,5 @@
 ion-content {
-    --ion-background-color: rgba(161, 255, 159, 0.719);
+    --ion-background-color: rgb(255, 255, 255);
   }
 .styROW {
     width: 100%;
@@ -7,11 +7,12 @@ ion-content {
     display: flex;
     flex-direction: row;
     background-color: white; 
-    border: 10px solid rgba(116, 194, 114, 0.5);
+    border: 10px solid #FFA451;
     border-radius: 0 0 45px 45px;
-
+    
   }
   .styRowB {
+    color: black;
     width: 100%;
     height: auto;
     display: flex;
