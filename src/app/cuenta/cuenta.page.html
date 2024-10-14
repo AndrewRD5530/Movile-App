@@ -7,93 +7,70 @@
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
           <ion-title>SuperPrice</ion-title>
-          <ion-icon name="fast-food" color="warning" size="large" slot="end"></ion-icon>
+          <ion-icon name="fast-food" color="icon-color" size="large" slot="end" style="padding: 9px;"></ion-icon>
         </ion-toolbar>
       </ion-header>
-      <ion-content style="background-color: aliceblue !important;">
-        <ion-menu-toggle auto-hide="false">
-          <ion-list [inset]="true">
-            <ion-item color="medium" routerLink="/home" tab="home" routerDirection="root"
-              routerLinkActive="active-link">
-              <ion-icon name="home-outline" slot="start"></ion-icon>
-              <ion-label>Inicio</ion-label>
-            </ion-item>
-            <ion-item color="medium" routerLink="/buscador" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="pricetags" slot="start"></ion-icon>
-              <ion-label>Buscar</ion-label>
-            </ion-item>
-            <ion-item color="medium" routerLink="/ofertas" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="pricetags" slot="start"></ion-icon>
-              <ion-label>Ofertas</ion-label>
-            </ion-item>
-            <ion-item color="medium" routerLink="/cuenta" routerDirection="root" routerLinkActive="active-link">
-              <ion-icon name="person-circle" slot="start"></ion-icon>
-              <ion-label>Cuenta</ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-menu-toggle>
+      <ion-content style="background-color: #ffffff !important;">
+        <ion-list [inset]="true" style="background-color: #ffffff !important;" >
+          <ion-item class="text-color border-color mg-button" lines="none" routerLink="/home">
+            <ion-icon name="restaurant" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Home</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" lines="none" routerLink="/buscador">
+            <ion-icon name="search-circle" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Buscar</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" lines="none" routerLink="/cuenta">
+            <ion-icon name="sparkles" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Mi cuenta</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" lines="none" routerLink="/carrito">
+            <ion-icon name="albums" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Mi Carrito</ion-label>
+          </ion-item>
+          <ion-item class="text-color border-color mg-button" lines="none" routerLink="/ofertas">
+            <ion-icon name="storefront" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Ofertas</ion-label>
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ion-menu>
-    <div id="main-content">
-      <ion-header>
+    <ion-content class="ion-page" id="main-content">
+      <ion-header class="ion-no-border">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
         <ion-toolbar>
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title>
-            SuperPrice
-          </ion-title>
-          <ion-avatar aria-hidden="true" slot="end" (click)="openPopover($event)" class="flex " style="padding: 9px;">
-            <img alt="" src="https://img.freepik.com/premium-psd/user-3d-icon_642950-57.jpg" width="50px">
-          </ion-avatar>
+          <ion-title slot="end">Carrito</ion-title>
+          <ion-icon id="popover-button" slot="end" name="cart" color="icon-color" size="large" style="padding: 9px;" ></ion-icon>
         </ion-toolbar>
       </ion-header>
+
       <!--poper para el usuario-->
-      <ion-popover  #popover [isOpen]="isPopoverOpen" (ionPopoverDidDismiss)="closePopover()">
+      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
         <ng-template>
-          <ion-content>
-            <ion-list>
-              <ion-item [button]="true" [detail]="false" routerLink="/cuenta">Cuenta</ion-item>
-              <ion-item [button]="true" [detail]="false" (click)="logOut()">Cerrar sesión</ion-item>
-              <!--
-              <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
-              <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
-                <ng-template>
-                  <ion-content>
-                    <ion-list>
-                      <ion-item [button]="true" [detail]="false">Nested option</ion-item>
-                    </ion-list>
-                  </ion-content>
-                </ng-template>
-              </ion-popover>-->
+          <ion-content class="content-border">
+            <ion-list class="popover-color">
+              <ion-item [button]="true" [detail]="false" routerLink="/cuenta" lines="none"  class="text-color text-family">
+                Mi cuenta
+              </ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="logOut()" lines="none" class="text-color text-family">Salir</ion-item>
             </ion-list>
           </ion-content>
         </ng-template>
       </ion-popover>
-      <ion-card class="color-card" >
-        <div class="color-fondo">
-          <img alt="Silhouette of user" src="../../assets/user-3d-icon_642950-57-removebg-preview.png">
-        </div>
-        <div>
+      <!--fin del poper-->
+      <ion-content class="margin-0">
+        <img src="../../assets/user-3d-icon_642950-57-removebg-preview.png" alt="Silhouette of user" class="user-image bg-color-base">
+        <ion-card>
           <ion-card-header>
-            <ion-card-title class="text-usuario">{{nombre}}</ion-card-title>
+            <ion-card-title class="texto-info">{{nombre}}</ion-card-title>
           </ion-card-header>
-          <ion-card-content class="ion-padding" style="padding-bottom: 50px; margin-bottom: 50px;">
-            <ion-card-content class="color-texto">
-              {{apellido}}
-            </ion-card-content>
-            <ion-card-content>
-              <ion-button expand="block" fill="" color="warning">
-                <ion-icon name="cart" slot="start"></ion-icon>
-                Ver tu producto
-              </ion-button>
-            </ion-card-content>
-
-          </ion-card-content>
-        </div>
-
-      </ion-card>
-    <ion-progress-bar value=".100" buffer=".1"></ion-progress-bar>
-    </div>
+        </ion-card>
+      </ion-content>
+    </ion-content>
   </ion-app>
 </ion-content>

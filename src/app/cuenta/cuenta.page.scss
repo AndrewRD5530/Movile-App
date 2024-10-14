@@ -1,49 +1,158 @@
-.color-fondo {
-    background: linear-gradient(45deg, #f67105, #d2bf11);
+ion-progress-bar {
+  --background: #687fe9;
+  --progress-background: #09c567;
+}
+ion-content {
+  --background: #FFA451;
+}
+ion-searchbar {
+  --border-radius: 10px !important;
+  --background: #dee0e9;
+  --color: #86869e;
+  box-shadow: none;
+  z-index: 10;
+}
+ion-toolbar {
+  --background: #ffffff;
+  --color: #000000;
+}
+
+.tab-bar-custom ion-tab-button:active {
+  transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
+}
+
+.ion-color-icon-color {
+  --ion-color-base: #ffa451;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #000000;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+}
+.ion-color-select-color {
+  --ion-color-base: #ffa451;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: hsl(0, 0%, 100%);
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+}
+
+.ion-color-btn-color {
+  --ion-color-base: #ffa451;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #000000;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+  border-radius: 5px !important;
+}
+
+.ion-color-icon-inverse {
+  --ion-color-base: #ffffff;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #000000;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+}
+.ion-size-medium {
+  --ion-font-size: 0.8rem;
+}
+ion-title {
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding: 0px;
+}
+
+.texto-info {
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 0px;
+  color: #27214d;
+}
+
+.popover-color {
+  background: #ffffff !important;
+}
+
+ion-item {
+  --background: transparent !important;
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.content-border {
+  border: 1px solid #ffa451;
+  background-color: #ffa451;
+}
+
+ion-menu {
+  --background-color: #ffffff;
+}
+
+ion-menu::part(container) {
+  box-shadow: 4px 0px 16px #ffa551a5;
+  background-color: #ffffff !important;
 }
 
 ion-content {
-    --ion-background-color: white;
+  --background-color: #ffffff;
 }
 
+.text-color {
+  color: #27214d;
+}
+.border-color {
+  border: 1px solid #ffa451;
+  border-radius: 20px !important;
+}
+.mg-button {
+  margin-top: 10px;
+}
+.mg-rigth {
+  margin-right: 10px;
+}
+.pg-botton {
+  margin-bottom: 50px;
+}
+.text-family {
+  font-family: "Bee Gothic", cursive;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.color-btn-text {
+  color: #fff;
+}
 ion-card {
-    --boder:0px;
-    border-radius: 0px;
-    margin: 0px;
-    padding: 0px;
-    box-shadow: none;
+  --background: #ffffff;
+  box-shadow: none;
+  border: #ffa5518b 1px solid;
+  border-radius: 20px 20px 0px 0px;
+  margin: 0;
+  height: 100%;
 }
 
-.text-usuario {
-    font-family: 'ABeeZee', sans-serif;
-    font-size: 2rem;
-    text-align: center; font-weight: bold;
-    color: #202020;
+.margin-0{
+    margin: 0;
 }
-.color-texto {
-    color: #202020;
-    font-family: 'ABeeZee', sans-serif;
-    font-weight: bold;
+.bg-color-base{
+    background-color: #FFA451;
 }
-ion-fab-button {
-    --background: #b7f399;
-    --background-activated: #87d361;
-    --background-hover: #a3e681;
-    --border-radius: 15px;
-    --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-    --color: black;
+ion-list {
+  background: #ffffff;
 }
 
-ion-progress-bar {
-    --background: #f3e895;
-    --progress-background: #09c567;
-    background-color: #529e72;
+ion-card-title {
+  font-family: "Bee Gothic", cursive;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
-
-ion-card ion-card-content{
-    --background-color: #f3e895;
-}
-
-.color-card{
-    background-color: #529e72;
+price-info {
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
 }

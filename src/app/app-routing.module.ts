@@ -32,7 +32,11 @@ const routes: Routes = [
     path: 'ofertas',
     loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
 
-   }
+   },  {
+    path: 'carrito',
+    loadChildren: () => import('./carrito/carrito.module').then( m => m.CarritoPageModule)
+  }
+
 
 ];
 
