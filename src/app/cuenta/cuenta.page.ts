@@ -25,7 +25,10 @@ export class CuentaPage implements OnInit {
   ngOnInit() {
     this.GetInfoUsuario();
     this.carritoProductos = this.cartService.getCartItems();
-    this.total = this.cartService.getTotalProducts();
+    // Suscribirse a los cambios del total
+    this.cartService.total$.subscribe(total => {
+      this.total = total;
+    });
   }
 
   async GetInfoUsuario() {

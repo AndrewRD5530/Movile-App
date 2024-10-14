@@ -26,6 +26,10 @@ export class HomePage {
   ngOnInit() {
     this.ObtenerProducto();
     this.ObtenerCategorias();
+    // Suscribirse a los cambios del total
+    this.cartService.total$.subscribe((total) => {
+      this.total = total;
+    });
   }
 
   async logOut() {
@@ -77,7 +81,6 @@ export class HomePage {
   addToCart(product: any) {
     this.cartService.addToCart(product);
     this.carritoProductos = this.cartService.getCartItems();
-    this.total = this.cartService.getTotalProducts();
   }
 
 }
