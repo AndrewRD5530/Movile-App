@@ -82,9 +82,9 @@
           <ion-label>No se encontraron productos</ion-label>
         </ion-alert>
         <ion-grid class="ion-justify-content-center">
-          <ion-row class="flex ion-justify-content-center">
-            <ion-title class="texto-info">Su resultado.</ion-title>
-            <ion-list *ngFor="let product of products" class="ion-justify-content-center">
+          <ion-title class="texto-info">Su resultado.</ion-title>
+          <ion-row class="flex ion-justify-content-center pg-botton">
+            <ion-list *ngFor="let product of products" class="ion-justify-content-center" >
               <ion-card>
                 <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen" width="278px">
                 <ion-card-header>
