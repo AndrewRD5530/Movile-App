@@ -44,25 +44,17 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title slot="end">Carrito</ion-title>
-          <ion-icon id="popover-button" slot="end" name="cart" color="icon-color" size="large" style="padding: 9px;" ></ion-icon>
+          <ion-chip color="success" slot="end">
+            <ion-icon name="cart"  color="success"></ion-icon>
+            <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
+          </ion-chip>
+          <ion-chip color="warning" slot="end">
+            <ion-icon name="wallet"  color="icon-color"></ion-icon>
+            <ion-label>Total: {{total}}</ion-label>
+          </ion-chip>
         </ion-toolbar>
       </ion-header>
 
-      <!--poper para el usuario-->
-      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
-        <ng-template>
-          <ion-content class="content-border">
-            <ion-list class="popover-color">
-              <ion-item [button]="true" [detail]="false" routerLink="/cuenta" lines="none"  class="text-color text-family">
-                Mi cuenta
-              </ion-item>
-              <ion-item [button]="true" [detail]="false" (click)="logOut()" lines="none" class="text-color text-family">Salir</ion-item>
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-      <!--fin del poper-->
       <ion-content class="ion-padding">
         <ion-title class="texto-info">Hola <b>{{Usuario}}</b> , ¿qué quieres hacer? <br> Puedes buscar productos en la barra de busqueda</ion-title>
         <ion-toolbar style="z-index: 20;">
@@ -85,8 +77,8 @@
           <ion-title class="texto-info">Su resultado.</ion-title>
           <ion-row class="flex ion-justify-content-center pg-botton">
             <ion-list *ngFor="let product of products" class="ion-justify-content-center" >
-              <ion-card>
-                <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen" width="278px">
+              <ion-card >
+                <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen" width="278px" [routerLink]="['/pro-description', product.id]">
                 <ion-card-header>
                   <ion-card-title class="text-color">{{product.nombre}}</ion-card-title>
                 </ion-card-header>
@@ -112,7 +104,7 @@
                       <ion-icon name="add"></ion-icon>
                     </ion-fab-button>
                     <ion-fab-list side="top">
-                      <ion-fab-button color="select-color">
+                      <ion-fab-button color="select-color" (click)="addToCart(product)">
                         <ion-icon name="bag-add"></ion-icon>
                       </ion-fab-button>
                     </ion-fab-list>

@@ -1,6 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>carrito</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/cart']">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="danger">{{carritoProductos.length}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +16,12 @@
       <ion-title size="large">carrito</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-list *ngFor="let item of carritoProductos">
+      <ion-item>
+        <ion-label>{{item.nombre}} - {{item.precio}}</ion-label>
+        <ion-button color="danger" (click)="removeItem(item.id)">Eliminar</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-content>

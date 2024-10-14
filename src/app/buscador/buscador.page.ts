@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.page.html',
@@ -16,9 +17,10 @@ export class BuscadorPage implements OnInit {
   isAlertOpen = false; // Estado de la alerta
   private searchSubject: Subject<string> = new Subject();
   isPopoverOpen = false;
-
+  carritoProductos:any[] =[];
   Usuario = localStorage.getItem('nombre');
-  constructor(private alertController: AlertController, private router: Router) {}
+  total = 0;
+  constructor(private alertController: AlertController, private router: Router, private cartService: CartService) {}
   @ViewChild('popover') popover: any;
   ngOnInit() {
     this.searchSubject.pipe(debounceTime(500)).subscribe((searchTerm) => {
@@ -26,11 +28,11 @@ export class BuscadorPage implements OnInit {
     });
     //this.searchProducts(event);
   }
- 
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
- 
+
   searchProducts(event: any) {
     const searchTerm = event.target.value.trim();
     //const searchTerm = "soya";
@@ -41,7 +43,7 @@ export class BuscadorPage implements OnInit {
       this.products = []; // Limpiar los productos si no hay búsqueda
     }
   }
- 
+
   async getProducts(searchTerm: string) {
     const token = localStorage.getItem('access_token');
     const headers = {
@@ -49,17 +51,17 @@ export class BuscadorPage implements OnInit {
       Authorization: `Bearer ${token}`,
     };
     console.log("token:", token);
- 
+
     const json = {
       keyWord: searchTerm,
     };
- 
+
     const url = 'http://127.0.0.1:8000/ToolsData/api/SeachProductos';
- 
+
     try {
       const response = await axios.post(url, json, { headers });
       const productos = response.data.data.productos;
- 
+
       if (
         productos.length > 0 &&
         productos[0].details === 'producto no encontrado'
@@ -75,7 +77,7 @@ export class BuscadorPage implements OnInit {
       this.isLoading = false;
     }
   }
- 
+
   // Método para mostrar la alerta
   async showAlert(message: string) {
     const alert = await this.alertController.create({
@@ -84,10 +86,10 @@ export class BuscadorPage implements OnInit {
       buttons: ['OK'],
       cssClass: 'custom-alert',
     });
- 
+
     await alert.present();
   }
- 
+
   openPopover(event: any) {
     this.popover.event = event;
     this.isPopoverOpen = true;
@@ -96,7 +98,7 @@ export class BuscadorPage implements OnInit {
   closePopover() {
     this.isPopoverOpen = false;
   }
- 
+
   // Función para cerrar sesión (reemplazar con la lógica que desees)
   async logOut() {
     const access_token = localStorage.getItem('access_token');
@@ -108,4 +110,11 @@ export class BuscadorPage implements OnInit {
     this.router.navigate(['/']);
     this.isPopoverOpen = false;
   }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    this.carritoProductos = this.cartService.getCartItems();
+    this.total = this.cartService.getTotalProducts();
+  }
+
 }

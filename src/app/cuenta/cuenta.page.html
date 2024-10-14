@@ -44,37 +44,41 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title slot="end">Carrito</ion-title>
-          <ion-icon id="popover-button" slot="end" name="cart" color="icon-color" size="large" style="padding: 9px;" ></ion-icon>
+          <ion-chip color="success" slot="end">
+            <ion-icon name="cart"  color="success"></ion-icon>
+            <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
+          </ion-chip>
+          <ion-chip color="warning" slot="end">
+            <ion-icon name="wallet"  color="icon-color"></ion-icon>
+            <ion-label>Total: {{total}}</ion-label>
+          </ion-chip>
         </ion-toolbar>
-      </ion-header>
 
-      <!--poper para el usuario-->
-      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
-        <ng-template>
-          <ion-content class="content-border">
-            <ion-list class="popover-color">
-              <ion-item [button]="true" [detail]="false" routerLink="/cuenta" lines="none"  class="text-color text-family">
-                Mi cuenta
-              </ion-item>
-              <ion-item [button]="true" [detail]="false" (click)="logOut()" lines="none" class="text-color text-family">Salir</ion-item>
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-      <!--fin del poper-->
+      </ion-header>
       <div class="color">
         <img src="../../assets/user-3d-icon_642950-57-removebg-preview.png" alt="Silhouette of user" class="user-image">
       </div>
       <ion-card>
         <ion-card-header>
-          <ion-card-title class="text-user-card ion-padding">{{nombre}} {{apellido}}</ion-card-title>
+          <div style="margin: 0;">
+            <ion-chip color="tertiary" slot="end">
+              <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
+              <ion-label class="text-family text-color">tu información</ion-label>
+            </ion-chip>
+          </div>
+          <ion-card-title class="text-user-card ion-margin-bottom" style="margin-top: 0;">{{nombre}} {{apellido}}</ion-card-title>
         </ion-card-header>
-        <ion-card-content class="ion-padding ">
-          <ion-chip color="success" class="ion-margin-bottom">
-            <ion-icon name="pin"slot="start" size="medium"></ion-icon>
-            <ion-label class="text-family text-color">tu información</ion-label>
-          </ion-chip>
+        <ion-card-content class="ion-padding ion-margin-bottom">
+          <div class="ion-margin-bottom">
+            <ion-chip color="success" slot="end">
+              <ion-icon name="cart"  color="success" size="medium"></ion-icon>
+              <ion-label class="text-family text-color">Cantidad: {{carritoProductos.length}}</ion-label>
+            </ion-chip>
+            <ion-chip color="warning" slot="end">
+              <ion-icon name="wallet"  color="icon-color" size="medium"></ion-icon>
+              <ion-label class="text-family text-color">Total: {{total}}</ion-label>
+            </ion-chip>
+          </div>
           <hr>
           <ion-card-subtitle class="ion-padding text-color style-text-subtitle"> Mas información de tu cuenta </ion-card-subtitle>
           <ion-card-content class="ion-padding text-content-info">

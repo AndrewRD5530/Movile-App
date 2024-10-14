@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,8 @@ export class HomePage {
 
   productos: any[] = []
   categorias: any[] = []
-  constructor() {}
+  isPopoverOpen = false;
+  constructor(private router: Router) {}
 
   isMenuOpen = false; // Variable para manejar el estado del menú
 
@@ -25,6 +26,17 @@ export class HomePage {
     this.ObtenerCategorias();
   }
 
+  async logOut() {
+    const access_token = localStorage.getItem('access_token');
+    console.log("Tokens:", access_token);
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('correo');
+    localStorage.removeItem('usuarioID');
+    //redireccionar a la página de inicio
+    this.router.navigate(['/']);
+    this.isPopoverOpen = false;
+  }
   async ObtenerProducto() {
     // definir token bearer para autenticar
     const token = localStorage.getItem('access_token');
