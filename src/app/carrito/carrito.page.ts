@@ -17,7 +17,10 @@ export class CarritoPage implements OnInit {
       this.carritoProductos = items;
     });
 
-    this.total = this.cartService.getTotalProducts();
+    // Suscribirse a los cambios del total
+    this.cartService.total$.subscribe(total => {
+      this.total = total;
+    });
   }
   removeItem(productId: number) {
     this.cartService.removeFromCart(productId);
@@ -30,5 +33,9 @@ export class CarritoPage implements OnInit {
     localStorage.removeItem('correo');
     //redireccionar a la página de inicio
     this.router.navigate(['/']);
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
   }
 }

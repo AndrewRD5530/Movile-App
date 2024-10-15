@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import axios from 'axios';
 import { debounceTime } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
@@ -17,16 +17,24 @@ export class BuscadorPage implements OnInit {
   isAlertOpen = false; // Estado de la alerta
   private searchSubject: Subject<string> = new Subject();
   isPopoverOpen = false;
-  carritoProductos:any[] =[];
+  carritoProductos: any[] = [];
   Usuario = localStorage.getItem('nombre');
   total = 0;
-  constructor(private alertController: AlertController, private router: Router, private cartService: CartService) {}
+  constructor(
+    private alertController: AlertController,
+    private router: Router,
+    private cartService: CartService
+  ) {}
   @ViewChild('popover') popover: any;
   ngOnInit() {
     this.searchSubject.pipe(debounceTime(500)).subscribe((searchTerm) => {
       this.getProducts(searchTerm);
     });
     //this.searchProducts(event);
+    // Suscribirse a los cambios del total
+    this.cartService.total$.subscribe((total) => {
+      this.total = total;
+    });
   }
 
   toggleMenu() {
@@ -50,7 +58,7 @@ export class BuscadorPage implements OnInit {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
-    console.log("token:", token);
+    console.log('token:', token);
 
     const json = {
       keyWord: searchTerm,
@@ -102,7 +110,7 @@ export class BuscadorPage implements OnInit {
   // Función para cerrar sesión (reemplazar con la lógica que desees)
   async logOut() {
     const access_token = localStorage.getItem('access_token');
-    console.log("Tokens:", access_token);
+    console.log('Tokens:', access_token);
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('correo');
@@ -114,7 +122,5 @@ export class BuscadorPage implements OnInit {
   addToCart(product: any) {
     this.cartService.addToCart(product);
     this.carritoProductos = this.cartService.getCartItems();
-    this.total = this.cartService.getTotalProducts();
   }
-
 }
