@@ -13,8 +13,10 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
+  Confirmpassword: string = '';
   nombre: string = '';
   apellido: string = '';
+  isErrorCuenta: boolean = false;
   isToastOpen: boolean = false;
   IsModalOpen: boolean = false;
   constructor( private router: Router, private toastController: ToastController,) { }
@@ -30,55 +32,60 @@ export class LoginPage implements OnInit {
   async onSubmit() {
     console.log("Email:", this.email);
     console.log("Contraseña:", this.password);
-    // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
-    const url = 'http://127.0.0.1:8000/api/usuario/login';
-    const Credenciales = {
-      "correo": this.email,
-      "password": this.password
-    };
-    try {
-      const response = await axios.post(url, Credenciales);
-      const respuesta = response.data;
-      if (respuesta.data) {
-        const tokens = respuesta.data.access;
-        const refresh = respuesta.data.refresh;
-        const correo = respuesta.data.correo;
-        const usuarioID = respuesta.data.usuarioID;
-        const nombre = respuesta.data.nombre;
-        //guardar en local storage
-        console.log("access_token:", tokens);
-        localStorage.setItem('access_token', tokens);
-        localStorage.setItem('refresh_token', refresh);
-        localStorage.setItem('correo', correo);
-        localStorage.setItem('usuarioID', usuarioID);
-        localStorage.setItem('nombre', nombre);
+      // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
+      const url = 'http://127.0.0.1:8000/api/usuario/login';
+      const Credenciales = {
+        "correo": this.email,
+        "password": this.password
+      };
+      try {
+        const response = await axios.post(url, Credenciales);
+        const respuesta = response.data;
+        if (respuesta.data) {
+          const tokens = respuesta.data.access;
+          const refresh = respuesta.data.refresh;
+          const correo = respuesta.data.correo;
+          const usuarioID = respuesta.data.usuarioID;
+          const nombre = respuesta.data.nombre;
+          //guardar en local storage
+          console.log("access_token:", tokens);
+          localStorage.setItem('access_token', tokens);
+          localStorage.setItem('refresh_token', refresh);
+          localStorage.setItem('correo', correo);
+          localStorage.setItem('usuarioID', usuarioID);
+          localStorage.setItem('nombre', nombre);
+          this.IsModalOpen = false;
+          //redireccionar a la página de inicio
+          this.router.navigate(['/home']);
+        } else {
+          const position = 'top';
+          const toast = await this.toastController.create({
+            message: 'Usuario o contraseña son incorrectos',
+            duration: 1500,
+            position: position,
+            icon: 'warning',
+            color: 'danger',
+          });
+          await toast.present();
+          this.IsModalOpen = false;
+          this.email = '';
+          this.password = '';
+          this.nombre = '';
+          this.apellido = '';
+        }
+      } catch (error) {
+        console.error("Error al enviar solicitud:", error);
         this.IsModalOpen = false;
-        //redireccionar a la página de inicio
-        this.router.navigate(['/home']);
-      } else {
-        const position = 'top';
-        const toast = await this.toastController.create({
-          message: 'Usuario o contraseña son incorrectos',
-          duration: 1500,
-          position: position,
-          icon: 'warning',
-          color: 'danger',
-        });
-        await toast.present();
-        this.IsModalOpen = false;
-        this.email = '';
-        this.password = '';
-        this.nombre = '';
-        this.apellido = '';
       }
-    } catch (error) {
-      console.error("Error al enviar solicitud:", error);
-      this.IsModalOpen = false;
-    }
+  }
+
+  setErrorCrearCuenta(isOpenError: boolean){
+    this.isErrorCuenta = isOpenError;
   }
 
   async onRegistrar() {
-    // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
+    if (this.password === this.Confirmpassword) {
+      // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
     const url = 'http://127.0.0.1:8000/api/usuario/crear';
     const Credenciales = {
       "correo": this.email,
@@ -123,5 +130,11 @@ export class LoginPage implements OnInit {
       this.nombre = '';
       this.apellido = '';
     }
+    }else{
+      this.setErrorCrearCuenta(true);
+      this.password = '';
+      this.Confirmpassword = '';
+    }
+    
   }
 }

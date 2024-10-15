@@ -52,6 +52,10 @@
               <ion-input [(ngModel)]="password" label="Contraseña:" placeholder="********" type="password"></ion-input>
             </ion-item>
             <ion-item>
+              <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+              <ion-input [(ngModel)]="Confirmpassword" label="Confirmar contraseña:" placeholder="********" type="password"></ion-input>
+            </ion-item>
+            <ion-item>
               <ion-icon name="person-add-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input [(ngModel)]="nombre" label="Nombre:" placeholder="Nombre" type="text"></ion-input>
             </ion-item>
@@ -64,5 +68,13 @@
         </div>
       </ng-template>
     </ion-modal>
+    <ion-toast
+    [isOpen]="isErrorCuenta"
+    color="danger"
+    position="top"
+    message="Las contraseñas deben ser iguales!"
+    [duration]="5000"
+    (didDismiss)="setErrorCrearCuenta(false)"
+  ></ion-toast>
   </ion-app>
 </ion-content>
