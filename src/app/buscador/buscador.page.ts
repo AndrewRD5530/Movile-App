@@ -35,6 +35,9 @@ export class BuscadorPage implements OnInit {
     this.cartService.total$.subscribe((total) => {
       this.total = total;
     });
+    this.cartService.cart$.subscribe(items => {
+      this.carritoProductos = items;
+    });
   }
 
   toggleMenu() {

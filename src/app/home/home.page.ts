@@ -30,6 +30,9 @@ export class HomePage {
     this.cartService.total$.subscribe((total) => {
       this.total = total;
     });
+    this.cartService.cart$.subscribe(items => {
+      this.carritoProductos = items;
+    });
   }
 
   async logOut() {
