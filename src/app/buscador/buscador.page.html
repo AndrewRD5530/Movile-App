@@ -86,16 +86,18 @@
                 <ion-card-header>
                   <ion-card-title class="text-color">{{product.nombre}}</ion-card-title>
                 </ion-card-header>
-                <ion-card-content class="ion-padding">
+                <ion-card-content class="ion-padding" style="width: 75%;">
                   <ion-chip color="success">
                     <ion-icon name="pin"slot="start" size="medium"></ion-icon>
-                    <ion-label class="text-family text-color">{{product.precio}}</ion-label>
-                    <ion-icon name="close"></ion-icon>
+                    <ion-label class="text-family text-color">${{product.precio}}</ion-label>
                   </ion-chip>
                   <ion-chip color="success">
                     <ion-icon name="pin"slot="start" size="medium"></ion-icon>
-                    <ion-label class="text-family text-color">En stock</ion-label>
-                    <ion-icon name="close"></ion-icon>
+                    <ion-label class="text-family text-color">{{product.categoriaID}}</ion-label>
+                  </ion-chip>
+                  <ion-chip color="danger">
+                    <ion-icon name="store"slot="start" size="medium"></ion-icon>
+                    <ion-label class="text-family text-color">{{product.tienda}}</ion-label>
                   </ion-chip>
                 </ion-card-content>
                 <div class="ion-padding flex ion-justify-content-between ">
