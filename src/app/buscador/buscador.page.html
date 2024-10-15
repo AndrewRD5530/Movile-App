@@ -78,7 +78,14 @@
           <ion-label>No se encontraron productos</ion-label>
         </ion-alert>
         <ion-grid class="ion-justify-content-center">
-          <ion-title class="texto-info">Su resultado.</ion-title>
+          <div class="flex">
+            <ion-title class="texto-info">Su resultado.
+            </ion-title>
+            <ion-chip color="danger" slot="end">
+              <ion-icon name="arrow-down-circle"  color="danger"></ion-icon>
+              <ion-label class="info-text">ordenados de menor a mayor</ion-label>
+            </ion-chip>
+          </div>
           <ion-row class="flex ion-justify-content-center pg-botton">
             <ion-list *ngFor="let product of products" class="ion-justify-content-center" >
               <ion-card >
