@@ -64,7 +64,7 @@ export class OfertasPage implements OnInit {
       precio: "1.25",
       urlImagen: "https://bitworks-multimedia.azurewebsites.net/api/selectos/multimedia/5d4441c2-f811-4436-bb13-a3140c13e734/content"
     },
-    // Añadir más productos si es necesario
+    // http://127.0.0.1:8000/ToolsData/api/TopProductos Api
   ];
 
   @ViewChild('popover') popover: any;
@@ -77,6 +77,23 @@ export class OfertasPage implements OnInit {
       this.total = total;
     });
    }
+   async ObtenerProducto() {
+    // definir token bearer para autenticar
+    const token = localStorage.getItem('access_token');
+    // headers para autenticar
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+    try {
+      const respuesta = await axios.get("http://127.0.0.1:8000/ToolsData/api/TopProductos", { headers });
+      this.productos = respuesta.data.data.productos;
+      //a;adiendo los productos con mejkores precios a la lista
+      console.log(this.productos);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
 
   openPopover(event: any) {
     this.popover.event = event;
@@ -97,5 +114,9 @@ export class OfertasPage implements OnInit {
     //redireccionar a la página de inicio
     this.router.navigate(['/']);
     this.isPopoverOpen = false;
+  }
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    this.carritoProductos = this.cartService.getCartItems();
   }
 }

@@ -5,6 +5,10 @@ ion-progress-bar {
 ion-content {
   --background: #fff;
 }
+.product-image {
+  max-width: 258px;
+  max-height: 250px;
+}
 ion-searchbar {
   --border-radius: 10px !important;
   --background: #dee0e9;
