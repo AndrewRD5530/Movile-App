@@ -1,119 +1,65 @@
-<ion-content fullscreen="true">
-  <ion-app>
-    <ion-menu contentId="main-content">
-      <ion-header>
-        <ion-toolbar color="light">
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-          <ion-title>SuperPrice</ion-title>
-          <ion-icon name="fast-food" color="icon-color" size="large" slot="end" style="padding: 9px;"></ion-icon>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list [inset]="true" style="background-color: #ffffff !important;" >
-          <ion-item class="text-color border-color mg-button"   tab="home" lines="none" routerDirection="root" routerLink="/home">
-            <ion-icon name="restaurant" color="icon-color" slot="start" size="large"></ion-icon>
-            <ion-label class="text-family">Home</ion-label>
-          </ion-item>
-          <ion-item class="text-color border-color mg-button"  tab="buscador" lines="none" routerDirection="root" routerLink="/buscador">
-            <ion-icon name="search-circle" color="icon-color" slot="start" size="large"></ion-icon>
-            <ion-label class="text-family">Buscar</ion-label>
-          </ion-item>
-          <ion-item class="text-color border-color mg-button" tab="cuenta" lines="none" routerDirection="root" routerLink="/cuenta">
-            <ion-icon name="sparkles" color="icon-color" slot="start" size="large"></ion-icon>
-            <ion-label class="text-family">Mi cuenta</ion-label>
-          </ion-item>
-          <ion-item class="text-color border-color mg-button"  tab="carrito" lines="none" routerDirection="root" routerLink="/carrito">
-            <ion-icon name="albums" color="icon-color" slot="start" size="large"></ion-icon>
-            <ion-label class="text-family">Mi Carrito</ion-label>
-          </ion-item>
-          <ion-item class="text-color border-color mg-button" tab="ofertas" lines="none" routerDirection="root" routerLink="/ofertas">
-            <ion-icon name="storefront" color="icon-color" slot="start" size="large"></ion-icon>
-            <ion-label class="text-family">Ofertas</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-content class="ion-page" id="main-content">
-      <ion-header class="ion-no-border">
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-          </ion-buttons>
-          <ion-chip color="success" slot="end">
-            <ion-icon name="cart"  color="success"></ion-icon>
-            <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
-          </ion-chip>
-          <ion-chip color="warning" slot="end">
-            <ion-icon name="wallet"  color="icon-color"></ion-icon>
-            <ion-label>Total: {{total}}</ion-label>
-          </ion-chip>
-        </ion-toolbar>
-
-      </ion-header>
-      <div class="color">
-        <img src="../../assets/user-3d-icon_642950-57-removebg-preview.png" alt="Silhouette of user" class="user-image">
-      </div>
-      <ion-card>
-        <ion-card-header>
-          <div style="margin: 0;">
-            <ion-chip color="tertiary" slot="end">
-              <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
-              <ion-label class="text-family text-color">tu información</ion-label>
-            </ion-chip>
-          </div>
-          <ion-card-title class="text-user-card ion-margin-bottom" style="margin-top: 0;">{{nombre}} {{apellido}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content class="ion-padding ion-margin-bottom">
-          <div class="ion-margin-bottom">
-            <ion-chip color="success" slot="end">
-              <ion-icon name="cart"  color="success" size="medium"></ion-icon>
-              <ion-label class="text-family text-color">Cantidad: {{carritoProductos.length}}</ion-label>
-            </ion-chip>
-            <ion-chip color="warning" slot="end">
-              <ion-icon name="wallet"  color="icon-color" size="medium"></ion-icon>
-              <ion-label class="text-family text-color">Total: {{total}}</ion-label>
-            </ion-chip>
-          </div>
-  <ion-header collapse="condense">
-  </ion-header>
-  <div *ngFor="let item of products">
-    <ion-row class="styROW">
-      <ion-col size="12">
-        <ion-card class="ionCARD">
-          <ion-card-content>
-            <ion-buttons class="styButton" (click)="returnPage()">
-              <ion-icon name="return-down-back-outline" aria-hidden="true"></ion-icon>
-            </ion-buttons>
-            <div class="cards1">
-              <div class="CardProduct">
-                <div class="CardImg">
-                  <img class="styIMG" src="{{item.urlImagen}}" alt="img">
+<ion-app>
+  <ion-content class="ion-page" id="main-content">
+    <div *ngFor="let item of products">
+      <ion-row class="styROW">
+        <ion-col class="styItem" size="12">
+          <ion-card class="ionCARD">
+            <ion-card-content>
+              <ion-buttons class="styButton" (click)="returnPage()">
+                <ion-icon name="arrow-back-circle" aria-hidden="true"></ion-icon>
+              </ion-buttons>
+              <div class="cards1">
+                <div class="CardProduct">
+                  <div class="CardImg">
+                    <img class="styIMG" src="{{item.urlImagen}}" alt="img">
+                  </div>
                 </div>
               </div>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <br>
-    <ion-row class="styRowB">
-      <ion-col size="12">
-        <ion-label class="styName">{{ item.nombre}}</ion-label><br>
-        <ion-label class="styPrice">{{ item.precio | currency:'USD':'symbol':'1.2-2'}}</ion-label><br>
-        <ion-label class="styDes">Descripción</ion-label><br>
-        <ion-label class="styDesCr">{{ item.categoriaID }}</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row class="styRowB">
-      <ion-col size="12">
-        <br>
-        <button fill="solid" class="category-button">Agregar</button>
-      </ion-col>
-    </ion-row>
-  </div>
-</ion-content>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row class="styRowB">
+        <ion-col size="12">
+          <div>
+            <ion-chip color="success" slot="end">
+              <ion-icon name="cart" color="success"></ion-icon>
+              <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
+            </ion-chip>
+            <ion-chip color="warning" slot="end">
+              <ion-icon name="wallet" color="icon-color"></ion-icon>
+              <ion-label>Total: {{total}}</ion-label>
+            </ion-chip>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" size-md="4" size-lg="2">{{ item.nombre }}</ion-col>
+              <ion-col size="6" size-md="4" size-lg="2">{{ item.precio | currency:'USD':'symbol':'1.2-2' }}</ion-col>
+              <ion-col size="6" size-md="4" size-lg="2">
+                <ion-chip color="success">
+                  <ion-icon name="storefront" color="success"></ion-icon>
+                  <ion-label>{{ item.tienda }}</ion-label>
+                  <ion-icon name="apps" color="success"></ion-icon>
+                </ion-chip>
+              </ion-col>
+              <ion-col size="6" size-md="4" size-lg="2">
+                <ion-chip color="danger">
+                  <ion-icon name="duplicate" color="danger"></ion-icon>
+                  <ion-label>{{ item.categoriaID }}</ion-label>
+                  <ion-icon name="apps" color="danger"></ion-icon>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+      <ion-row class="styRowB">
+        <ion-col size="12">
+          <br>
+          <button fill="solid" class="category-button" (click)="addToCart(item)">Agregar</button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-content>
+</ion-app>
