@@ -90,7 +90,7 @@
             <ion-list *ngFor="let product of products" class="ion-justify-content-center" >
               <ion-card >
                 <div class="flex ion-justify-content-center" style=" width: 267px; height: 267px;">
-                  <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen"  [routerLink]="['/pro-description', product.id]">
+                  <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen" [routerLink]="['/pro-description', product.id]">
                 </div>
                 <ion-card-header>
                   <ion-card-title class="text-color">{{product.nombre}}</ion-card-title>
