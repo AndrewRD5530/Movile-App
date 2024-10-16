@@ -126,7 +126,7 @@
               <p class="text-color text-family">Hola! {{nombre}} {{apellido}}, por ahora eres no usuario premium, ¿quieres actualizar a usuario premium?</p>
             </div>
             <div class="flex ion-justify-content-between ion-padding">
-              <ion-button color="btn-color" class="btn-text" (click)="updatePremiunUser()" *ngIf="ischip === true">Degradar</ion-button>
+              <ion-button color="btn-color" class="btn-text" (click)="degradarPremiunUser()" *ngIf="ischip === true">Degradar</ion-button>
               <ion-button color="btn-color" class="btn-text" (click)="updatePremiunUser()" *ngIf="ischip === false">Actualizar</ion-button>
               <ion-button color="btn-color" class="btn-text" (click)="modal.dismiss()">Cerrar</ion-button>
             </div>
