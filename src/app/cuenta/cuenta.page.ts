@@ -21,6 +21,7 @@ export class CuentaPage implements OnInit {
   carritoProductos:any[] =[];
   total = 0;
   ischip = false;
+  mensaje : string = '';
   constructor(private router: Router, private cartService: CartService) { }
   @ViewChild('popover') popover: any;
 
@@ -89,5 +90,28 @@ export class CuentaPage implements OnInit {
     //redireccionar a la página de inicio
     this.router.navigate(['/']);
     this.isPopoverOpen = false;
+  }
+
+  async updatePremiunUser() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/actualizarToPremium';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      const response = await axios.post(url, json, { headers});
+      const respuesta = response.data;
+      if (respuesta.details){
+        const mensaje = respuesta.details;
+        this.mensaje = mensaje;
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
   }
 }
