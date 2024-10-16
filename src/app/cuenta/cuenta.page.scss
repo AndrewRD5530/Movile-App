@@ -61,6 +61,16 @@ ion-toolbar {
   --ion-color-shade: #000000;
   --ion-color-tint: #ffffff;
 }
+.ion-color-btn-eliminar{
+  --ion-color-base: #f53636e3;
+  --ion-color-base-rgb: 255, 255, 255;
+  --ion-color-contrast: #fff;
+  --ion-color-contrast-rgb: 0, 0, 0;
+  --ion-color-shade: #000000;
+  --ion-color-tint: #ffffff;
+  border-radius: 10px !important;
+  font-family: "Bee Gothic", cursive;
+}
 .ion-size-medium {
   --ion-font-size: 0.8rem;
 }
@@ -180,4 +190,16 @@ price-info {
   font-weight: 400;
   font-size: 16px;
   color: #27214D;
+}
+
+.block {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffff;
+}
+
+ion-modal {
+  --height: auto;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import axios from 'axios';
 import { debounceTime } from 'rxjs/operators';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController  } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -12,14 +12,17 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cuenta.page.scss'],
 })
 export class CuentaPage implements OnInit {
-  isPopoverOpen = false;
   isMenuOpen = false;
   nombre: string = '';
   apellido: string = '';
   email: string = '';
+  isPremium:  string = '';
   carritoProductos:any[] =[];
   total = 0;
-  constructor(private router: Router, private cartService: CartService) { }
+  ischip = false;
+  mensaje : string = '';
+  IsModalOpen: boolean = false;
+  constructor(private router: Router, private cartService: CartService, private modal: ModalController) { }
   @ViewChild('popover') popover: any;
 
   ngOnInit() {
@@ -50,6 +53,14 @@ export class CuentaPage implements OnInit {
         this.nombre = data.nombre;
         this.apellido = data.apellido;
         this.email = data.correo;
+        const isPremiunData = data.isPremium;
+        if (isPremiunData === true) {
+          this.isPremium = 'Eres un usuario premium';
+          this.ischip = true;
+        } else {
+          this.isPremium = 'Eres un usuario no premium';
+          this.ischip = false;
+        }
         console.log("Datos:", this.nombre, this.apellido, this.email);
       } else {
         console.log("Error:", respuesta.error);
@@ -61,14 +72,7 @@ export class CuentaPage implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-  openPopover(event: any) {
-    this.popover.event = event;
-    this.isPopoverOpen = true;
-  }
-  // Cerrar el popover
-  closePopover() {
-    this.isPopoverOpen = false;
-  }
+
   async logOut() {
     const access_token = localStorage.getItem('access_token');
     console.log("Tokens:", access_token);
@@ -78,6 +82,59 @@ export class CuentaPage implements OnInit {
     localStorage.removeItem('usuarioID');
     //redireccionar a la página de inicio
     this.router.navigate(['/']);
-    this.isPopoverOpen = false;
+  }
+
+  async updatePremiunUser() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/actualizarToPremium';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      this.setOpenModal(false);
+      await this.GetInfoUsuario();
+      this.ischip = true;
+      const response = await axios.post(url, json, { headers});
+      const respuesta = response.data;
+      if (respuesta.details){
+        const mensaje = respuesta.details;
+        this.mensaje = mensaje;
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
+  }
+  async degradarPremiunUser() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/degradarToNormal';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      this.setOpenModal(false);
+      await this.GetInfoUsuario();
+      this.ischip = false;
+      const response = await axios.post(url, json, { headers });
+      const respuesta = response.data;
+      if (respuesta.details){
+        const mensaje = respuesta.details;
+        this.mensaje = mensaje;
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
+  }
+  setOpenModal(isOpen: boolean) {
+    this.IsModalOpen = isOpen;
   }
 }

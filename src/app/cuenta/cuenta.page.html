@@ -65,6 +65,18 @@
               <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
               <ion-label class="text-family text-color">tu información</ion-label>
             </ion-chip>
+            <div *ngIf="ischip === true">
+              <ion-chip color="tertiary" slot="end"  id="open-modal" (click)="setOpenModal(true)">
+                <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">{{isPremium}}</ion-label>
+              </ion-chip>
+            </div>
+            <div *ngIf="ischip === false">
+              <ion-chip color="danger" slot="end"  id="open-modal" (click)="setOpenModal(true)">
+                <ion-icon name="person-circle"  color="danger" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">No eres un usuario premium</ion-label>
+              </ion-chip>
+            </div>
           </div>
           <ion-card-title class="text-user-card ion-margin-bottom" style="margin-top: 0;">{{nombre}} {{apellido}}</ion-card-title>
         </ion-card-header>
@@ -102,6 +114,64 @@
           </ion-card-content>
         </ion-card-content>
       </ion-card>
+
+      <ion-modal trigger="open-modal"  [isOpen]="IsModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+        <ng-template>
+          <div class="block">
+            <ion-grid class="ion-padding">
+              <ion-row>
+                <ion-col size="12" class="ion-text-center">
+                  <ion-chip color="success" class="ion-margin-bottom">
+                    <ion-icon name="pin" slot="start" size="medium"></ion-icon>
+                    <ion-label class="chip-text text-color">{{nombre}} / {{apellido}}</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" class="ion-text-center">
+                  <p class="text-color text-family" *ngIf="ischip === true">
+                    Hola! {{nombre}} {{apellido}}, por ahora eres usuario premium, ¿quieres degradar a usuario común?
+                  </p>
+                  <p class="text-color text-family" *ngIf="ischip === false">
+                    Hola! {{nombre}} {{apellido}}, por ahora eres usuario común, ¿quieres actualizar a usuario premium?
+                  </p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="flex ion-justify-content-between">
+                <ion-col size="6" *ngIf="ischip === true">
+                  <ion-button
+                    color="btn-color"
+                    expand="block"
+                    class="btn-text"
+                    (click)="degradarPremiunUser()"
+                    >
+                    Degradar
+                  </ion-button>
+                </ion-col>
+                <ion-col size="6" *ngIf="ischip === false">
+                  <ion-button 
+                    color="btn-color"
+                    expand="block"
+                    class="btn-text"
+                    (click)="updatePremiunUser()"
+                    >
+                    Actualizar
+                  </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button
+                    color="btn-color"
+                    expand="block"
+                    class="btn-text"
+                    (click)="setOpenModal(false)">
+                    Cerrar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ng-template>
+      </ion-modal>
     </ion-content>
   </ion-app>
 </ion-content>
