@@ -44,31 +44,26 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-<<<<<<< HEAD
-          <ion-title slot="end">Mi Carrito</ion-title>
-          <ion-icon id="popover-button" slot="end" name="cart" color="icon-color" size="large" style="padding: 9px;" ></ion-icon>
-=======
           <ion-chip color="success" slot="end" tab="carrito" routerDirection="root"  routerLink="/carrito">
             <ion-icon name="cart"  color="success"></ion-icon>
             <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
           </ion-chip>
           <ion-chip color="warning" slot="end">
             <ion-icon name="wallet"  color="icon-color"></ion-icon>
-            <ion-label>Total: {{total}}</ion-label>
+            <ion-label>Total: ${{total}}</ion-label>
           </ion-chip>
->>>>>>> 3a32e678681f39206b59c1eb9d59bc9b5660e1be
         </ion-toolbar>
       </ion-header>
       <ion-grid>
         <ion-row class="container11">
           <ion-col>
             <h1 class="text-color text-family" style="text-align: center; font-size: 30px;">
-              <b>Mejores ofertas</b>
+              <b>Mejores Ofertas</b>
             </h1>
           </ion-col>
         </ion-row>
       </ion-grid>
-
+ 
       <ion-grid>
         <ion-row class="container11">
           <ion-col size="6" *ngFor="let item of productos">
@@ -87,7 +82,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
+ 
     </ion-content>
   </ion-app>
 </ion-content>
