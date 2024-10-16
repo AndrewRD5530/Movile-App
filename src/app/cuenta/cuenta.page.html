@@ -123,7 +123,8 @@
                 <ion-icon name="pin"slot="start" size="medium"></ion-icon>
                 <ion-label class="chip-text text-color">{{nombre}} / {{apellido}}</ion-label>
               </ion-chip>
-              <p class="text-color text-family">Hola! {{nombre}} {{apellido}}, por ahora eres no usuario premium, ¿quieres actualizar a usuario premium?</p>
+              <p class="text-color text-family" *ngIf="ischip === true">Hola! {{nombre}} {{apellido}}, por ahora eres usuario premium, ¿quieres degradar a usuario común?</p>
+              <p class="text-color text-family" *ngIf="ischip === false">Hola! {{nombre}} {{apellido}}, por ahora eres usuario común, ¿quieres actualizar a usuario premium?</p>
             </div>
             <div class="flex ion-justify-content-between ion-padding">
               <ion-button color="btn-color" class="btn-text" (click)="degradarPremiunUser()" *ngIf="ischip === true">Degradar</ion-button>
