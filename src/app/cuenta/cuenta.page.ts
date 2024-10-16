@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef   } from '@angular/core';
 import axios from 'axios';
 import { debounceTime } from 'rxjs/operators';
 import { AlertController, ModalController  } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
-
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',
@@ -22,7 +22,9 @@ export class CuentaPage implements OnInit {
   ischip = false;
   mensaje : string = '';
   IsModalOpen: boolean = false;
-  constructor(private router: Router, private cartService: CartService, private modal: ModalController) { }
+  isPremiumUser: boolean = false;
+  UserStatus: string = '';
+  constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService, private cdr: ChangeDetectorRef ) { }
   @ViewChild('popover') popover: any;
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class CuentaPage implements OnInit {
     // Suscribirse a los cambios del total
     this.cartService.total$.subscribe(total => {
       this.total = total;
+    });
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium; // Actualizar la variable en la interfaz
+      this.UserStatus = this.userService.getPremiumStatus() ? 'premium' : 'común';
     });
   }
 
@@ -54,6 +60,8 @@ export class CuentaPage implements OnInit {
         this.apellido = data.apellido;
         this.email = data.correo;
         const isPremiunData = data.isPremium;
+        // Notificar al CartService si es usuario premium y recalcular el total
+        await this.userService.updateUserStatus();
         if (isPremiunData === true) {
           this.isPremium = 'Eres un usuario premium';
           this.ischip = true;
@@ -101,6 +109,7 @@ export class CuentaPage implements OnInit {
       this.ischip = true;
       const response = await axios.post(url, json, { headers});
       const respuesta = response.data;
+      await this.userService.updateUserStatus();
       if (respuesta.details){
         const mensaje = respuesta.details;
         this.mensaje = mensaje;
@@ -126,6 +135,7 @@ export class CuentaPage implements OnInit {
       this.ischip = false;
       const response = await axios.post(url, json, { headers });
       const respuesta = response.data;
+      await this.userService.updateUserStatus();
       if (respuesta.details){
         const mensaje = respuesta.details;
         this.mensaje = mensaje;
