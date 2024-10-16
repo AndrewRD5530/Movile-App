@@ -1,133 +1,21 @@
 
-.container11{
-  background-color: #529e72;
-
-}
-
-.imagen-responsiva {
-  max-width: 100%; /* La imagen nunca será más ancha que el contenedor */
-  height: auto;    /* Mantiene la proporción de la imagen */
-  display: block;  /* Evita espacios blancos alrededor de la imagen */
-}
-
-.banner1 {
-  
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.imagen-responsiva {
-  max-width: 100%;
-  height: auto;
-  border-radius: 15px;  /* Bordes redondeados para la imagen */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para hacerla resaltar */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.imagen-responsiva:hover {
-  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al hacer hover */
-}
-
-
-ion-menu::part(backdrop) {
-  background-color: rgba(116, 194, 114, 0.5);
-}
-
-ion-menu::part(container) {
-  border-radius: 0 20px 20px 0;
-
-  box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
-}
-
-.tab-bar-custom {
-  background-color: #673e28; /* Color de fondo personalizado */
-  color: #b7b4b4; /* Color del texto */
-}
-
-.tab-bar-custom ion-tab-button {
-  --color-selected: #ff7f50; /* Color cuando el ícono está seleccionado */
-  --color: #0b0b0b; /* Color por defecto de los iconos */
-  --ripple-color: #ffcc99; /* Color del efecto de onda al hacer clic */
-  transition: transform 0.2s ease-in-out; /* Transición para animación */
-}
-
-.tab-bar-custom ion-tab-button:active {
-  transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
-}
-
-
-
-
-
-.custom-card {
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.custom-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.product-image {
- 
-  width: 100%;
-  height: 12em; 
-  object-fit: cover;
-  
-}
-
-.product-price {
-  font-size: 1.5rem;
-  color: #f53d3d;
-  font-weight: bold;
-  text-align: center;
-}
-
-.product-subtitle {
-  font-size: 0.9rem;
-  color: #8c8c8c;
-  text-align: center;
-}
-
-.product-content {
-  font-size: 1.2rem;
-  color: #333;
-  text-align: center;
-  padding: 10px 0;
-}
-
-ion-card {
-  background: linear-gradient(145deg, #fff, #f0f0f0);
-}
-
-.menu-encabezado{
-  background-color: white;
-
-}
-
-
-
 
 
 ion-progress-bar {
   --background: #687fe9;
   --progress-background: #09c567;
 }
-ion-content {
-  --background: #fff;
+ion-content{
+  --background: #ffffff;
 }
-ion-searchbar {
+ion-searchbar  {
   --border-radius: 10px !important;
   --background: #dee0e9;
-  --color: #86869e;
+  --color: #86869E;
   box-shadow: none;
   z-index: 10;
 }
-ion-toolbar {
+ion-toolbar{
   --background: #ffffff;
   --color: #000000;
 }
@@ -135,11 +23,9 @@ ion-toolbar {
 .tab-bar-custom ion-tab-button:active {
   transform: scale(0.9); /* Reduce ligeramente el tamaño al hacer clic */
 }
-.color{
-    background-color: #FFA451;
-}
+
 .ion-color-icon-color {
-  --ion-color-base: #ffa451;
+  --ion-color-base: #FFA451;
   --ion-color-base-rgb: 255, 255, 255;
   --ion-color-contrast: #000000;
   --ion-color-contrast-rgb: 0, 0, 0;
@@ -147,7 +33,7 @@ ion-toolbar {
   --ion-color-tint: #ffffff;
 }
 .ion-color-select-color {
-  --ion-color-base: #ffa451;
+  --ion-color-base: #FFA451;
   --ion-color-base-rgb: 255, 255, 255;
   --ion-color-contrast: hsl(0, 0%, 100%);
   --ion-color-contrast-rgb: 0, 0, 0;
@@ -156,16 +42,13 @@ ion-toolbar {
 }
 
 .ion-color-btn-color {
-  --ion-color-base: #ffa451;
+  --ion-color-base: #FFA451;
   --ion-color-base-rgb: 255, 255, 255;
-  --ion-color-contrast: #fff;
+  --ion-color-contrast: #000000;
   --ion-color-contrast-rgb: 0, 0, 0;
   --ion-color-shade: #000000;
   --ion-color-tint: #ffffff;
-    border-radius: 5px !important;
-    font-family: "Bee Gothic", cursive;
-    font-size: 16px;
-    font-weight: 800;
+  border-radius: 5px !important;
 }
 
 .ion-color-icon-inverse {
@@ -186,31 +69,31 @@ ion-title {
   padding: 0px;
 }
 
-.texto-info {
+.texto-info{
   font-family: "Bee Gothic", cursive;
   font-weight: 400;
   font-size: 0.9rem;
   padding: 0px;
-  color: #27214d;
+  color: #27214D;
 }
 
-.popover-color {
+.popover-color{
   background: #ffffff !important;
 }
 
-ion-item {
+ion-item{
   --background: transparent !important;
   font-family: "Bee Gothic", cursive;
   font-weight: 400;
   font-size: 0.8rem;
 }
 
-.content-border {
-  border: 1px solid #ffa451;
-  background-color: #ffa451;
+.content-border{
+  border: 1px solid #FFA451;
+  background-color: #FFA451;
 }
 
-ion-menu {
+ion-menu{
   --background-color: #ffffff;
 }
 
@@ -219,61 +102,57 @@ ion-menu::part(container) {
   background-color: #ffffff !important;
 }
 
-ion-content {
+ion-content{
   --background-color: #ffffff;
 }
 
-.text-color {
-  color: #27214d;
+.text-color{
+  color: #27214D;
 }
-.border-color {
-  border: 1px solid #ffa451;
+.border-color{
+  border: 1px solid #FFA451;
   border-radius: 20px !important;
 }
-.mg-button {
+.mg-button{
   margin-top: 10px;
 }
-.mg-rigth {
+.mg-rigth{
   margin-right: 10px;
 }
-.pg-botton {
+.pg-botton{
   margin-bottom: 50px;
 }
-.text-family {
+.text-family{
   font-family: "Bee Gothic", cursive;
   font-weight: bold;
   font-size: 0.8rem;
 }
 
-.color-btn-text {
+.color-btn-text{
   color: #fff;
 }
-ion-card {
+ion-card{
   --background: #ffffff;
   box-shadow: none;
   border: #ffa5518b 1px solid;
-  border-radius: 20px 20px 0px 0px;
-  margin: 0;
+  border-radius: 20px;
 }
-
-.margin-0{
-    margin: 0;
-}
-.bg-color-base{
-    background-color: #FFA451;
-}
-ion-list {
+ion-list{
   background: #ffffff;
 }
 
-ion-card-title {
+ion-card-title{
   font-family: "Bee Gothic", cursive;
   font-weight: bold;
-  font-size: 32px;
-  color: #27214D;
-  text-transform: capitalize;
+  font-size: 0.8rem;
 }
-price-info {
+price-info{
   font-family: "Bee Gothic", cursive;
   font-weight: 400;
+}
+
+.info-text{
+  font-family: "Bee Gothic", cursive;
+  font-weight: 400;
+  font-size: 11px;
 }

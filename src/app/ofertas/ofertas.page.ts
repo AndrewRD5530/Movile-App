@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-ofertas',
   templateUrl: './ofertas.page.html',
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
 export class OfertasPage implements OnInit {
   isPopoverOpen = false;
   isMenuOpen = false;
+  carritoProductos:any[] =[];
+  total = 0;
   productos: any[] = [
     {
       id: 1,
@@ -65,9 +68,15 @@ export class OfertasPage implements OnInit {
   ];
 
   @ViewChild('popover') popover: any;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cartService: CartService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.carritoProductos = this.cartService.getCartItems();
+    // Suscribirse a los cambios del total
+    this.cartService.total$.subscribe(total => {
+      this.total = total;
+    });
+   }
 
   openPopover(event: any) {
     this.popover.event = event;

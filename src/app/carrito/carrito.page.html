@@ -48,7 +48,7 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-chip color="success" slot="end">
+          <ion-chip color="success" tab="carrito" routerDirection="root"  slot="end">
             <ion-icon name="cart"  color="success"></ion-icon>
             <ion-label>Cantidad: {{carritoProductos.length}}</ion-label>
           </ion-chip>
@@ -66,9 +66,9 @@
       </div>
       <ion-content class="size-content">
         <ion-list [inset]="true" *ngFor="let item of carritoProductos">
-          <ion-item >
+          <ion-item [routerLink]="['/pro-description', item.id]">
             <!--imagen del producto-->
-            <div style="background-color: #FEF0F0;" [routerLink]="['/pro-description', item.id]" class="ion-margin-vertical">
+            <div style="background-color: #FEF0F0;"  class="ion-margin-vertical">
               <img  class="product-image" [src]="item.urlImagen" width="64px" height="64px">
             </div>
             <ion-label class="text-color text-font-family" style="margin-left: 10px;">{{item.nombre}}</ion-label>
