@@ -63,9 +63,9 @@
           <div style="margin: 0;">
             <ion-chip color="tertiary" slot="end">
               <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
-              <ion-label class="text-family text-color">tu información</ion-label>
+              <ion-label class="text-family text-color">tu información</ion-label><br>
             </ion-chip>
-          </div>
+          </div><br>
           <ion-card-title class="text-user-card ion-margin-bottom" style="margin-top: 0;">{{nombre}} {{apellido}}</ion-card-title>
         </ion-card-header>
         <ion-card-content class="ion-padding ion-margin-bottom">
@@ -76,24 +76,24 @@
             </ion-chip>
             <ion-chip color="warning" slot="end">
               <ion-icon name="wallet"  color="icon-color" size="medium"></ion-icon>
-              <ion-label class="text-family text-color">Total: {{total}}</ion-label>
+              <ion-label class="text-family text-color">Total: ${{total}}</ion-label>
             </ion-chip>
           </div>
           <hr>
           <ion-card-subtitle class="ion-padding text-color style-text-subtitle"> Mas información de tu cuenta </ion-card-subtitle>
           <ion-card-content class="ion-padding text-content-info">
-            Todos tus datos de cuenta en SuperPrice <br>
+            Todos los datos de tu cuenta en SuperPrice <br><br>
             <ion-chip color="success" class="ion-margin-bottom">
               <ion-icon name="pin"slot="start" size="medium"></ion-icon>
-              <ion-label class="chip-text text-color">{{email}}</ion-label>
+              <ion-label class="chip-text text-color">Correo: <br> {{email}}</ion-label>
             </ion-chip>
             <ion-chip color="success" class="ion-margin-bottom">
-              <ion-icon name="pin"slot="start" size="medium"></ion-icon>
-              <ion-label class="chip-text text-color">{{nombre}} / {{apellido}}</ion-label>
+              <ion-icon name="pin" slot="start" size="medium"></ion-icon>
+              <ion-label class="chip-text text-color">Nombre: <br> {{nombre}} {{apellido}}</ion-label>
             </ion-chip>
             <hr>
             <ion-card-content class="flex ion-justify-content-between" style="margin-bottom: 30px;">
-              <ion-button color="btn-color" class="btn-text" (click)="logOut()">
+              <ion-button color="btn-color" class="btn-text" style="margin-left: 2px;" (click)="logOut()">
                 <ion-icon name="exit" slot="start"></ion-icon>
                 Salir
               </ion-button>
