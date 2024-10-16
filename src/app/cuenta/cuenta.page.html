@@ -65,6 +65,18 @@
               <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
               <ion-label class="text-family text-color">tu información</ion-label>
             </ion-chip>
+            <div *ngIf="ischip === true">
+              <ion-chip color="tertiary" slot="end">
+                <ion-icon name="person-circle"  color="success" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">{{isPremium}}</ion-label>
+              </ion-chip>
+            </div>
+            <div *ngIf="ischip === false">
+              <ion-chip color="danger" slot="end">
+                <ion-icon name="person-circle"  color="danger" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">No eres un usuario premium</ion-label>
+              </ion-chip>
+            </div>
           </div>
           <ion-card-title class="text-user-card ion-margin-bottom" style="margin-top: 0;">{{nombre}} {{apellido}}</ion-card-title>
         </ion-card-header>

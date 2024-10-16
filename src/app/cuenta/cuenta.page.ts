@@ -17,8 +17,10 @@ export class CuentaPage implements OnInit {
   nombre: string = '';
   apellido: string = '';
   email: string = '';
+  isPremium:  string = '';
   carritoProductos:any[] =[];
   total = 0;
+  ischip = false;
   constructor(private router: Router, private cartService: CartService) { }
   @ViewChild('popover') popover: any;
 
@@ -50,6 +52,14 @@ export class CuentaPage implements OnInit {
         this.nombre = data.nombre;
         this.apellido = data.apellido;
         this.email = data.correo;
+        const isPremiunData = data.isPremium;
+        if (isPremiunData === true) {
+          this.isPremium = 'Eres un usuario premium';
+          this.ischip = true;
+        } else {
+          this.isPremium = 'Eres un usuario no premium';
+          this.ischip = false;
+        }
         console.log("Datos:", this.nombre, this.apellido, this.email);
       } else {
         console.log("Error:", respuesta.error);
