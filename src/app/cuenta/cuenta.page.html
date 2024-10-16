@@ -44,7 +44,7 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-chip *ng color="" slot="start">
+          <ion-chip [color]="UserStatus ? 'success' : 'danger'"slot="end" tab="carrito" routerDirection="root"  routerLink="/carrito">
             <ion-icon name="cash"  color="icon-color"></ion-icon>
             <ion-label>{{UserStatus}}</ion-label>
           </ion-chip>
