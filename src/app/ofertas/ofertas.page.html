@@ -64,25 +64,52 @@
         </ion-row>
       </ion-grid>
 
-      <ion-grid>
-        <ion-row class="container11">
-          <ion-col size="6" *ngFor="let item of productos">
-            <ion-card class="custom-card">
-              <div class="card-img-container">
-                <img alt="Imagen del producto" [src]="item.urlImagen" class="product-image"/>
-              </div>
-              <ion-card-header>
-                <ion-card-title class="product-price">${{item.precio}}</ion-card-title>
-                <ion-card-subtitle class="product-subtitle">Oferta Especial</ion-card-subtitle>
-              </ion-card-header>
-              <ion-card-content class="product-content">
-                {{item.nombre}}
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
+      <ion-row class="flex ion-justify-content-center pg-botton">
+        <ion-list *ngFor="let product of productos" class="ion-justify-content-center" >
+          <ion-card >
+            <img alt="Silhouette of mountains" class="product-image" [src]="product.urlImagen" width="278px" [routerLink]="['/pro-description', product.id]">
+            <ion-card-header>
+              <ion-card-title class="text-color">{{product.nombre}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-padding" style="width: 75%;">
+              <ion-chip color="success">
+                <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">${{product.precio}}</ion-label>
+              </ion-chip>
+              
+              <ion-chip color="success">
+                <ion-icon name="pin"slot="start" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">{{product.categoriaID}}</ion-label>
+              </ion-chip>
+              <ion-chip color="danger">
+                <ion-icon name="store"slot="start" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">{{product.tienda}}</ion-label>
+              </ion-chip>
+              <ion-chip color="danger">
+                <ion-icon name="store"slot="start" size="medium"></ion-icon>
+                <ion-label class="text-family text-color">{{product.descuento}}</ion-label>
+              </ion-chip>
+            
+            </ion-card-content>
+            <div class="ion-padding flex ion-justify-content-between ">
+              <ion-button size="small" color="btn-color" [routerLink]="['/pro-description', product.id]">
+                <ion-icon name="cart" slot="start" color="icon-inverse" size="medium"></ion-icon>
+                <ion-label class="text-family color-btn-text ">Ver producto</ion-label>
+              </ion-button>
+              <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+                <ion-fab-button color="select-color">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-list side="top">
+                  <ion-fab-button color="select-color" (click)="addToCart(product)">
+                    <ion-icon name="bag-add"></ion-icon>
+                  </ion-fab-button>
+                </ion-fab-list>
+              </ion-fab>
+            </div>
+          </ion-card>
+        </ion-list>
+      </ion-row>
     </ion-content>
   </ion-app>
 </ion-content>
