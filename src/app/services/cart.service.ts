@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   private cart = new BehaviorSubject<any[]>([]);
   cart$ = this.cart.asObservable();
+
   private total = new BehaviorSubject<number>(0);
   total$ = this.total.asObservable();
-  constructor() { }
+
+  private isPremiumUser = false; // Estado inicial del usuario
+
+  constructor(private userService: UserService) {
+    // Suscribirse a los cambios del estado premium del usuario
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium;
+      this.updateTotal(); // Recalcular el total cuando cambie el estado premium
+    });
+  }
 
   addToCart(product: any) {
     const currentCart = this.cart.value;
@@ -34,7 +45,13 @@ export class CartService {
   }
 
   private updateTotal() {
-    const totalAmount = this.cart.value.reduce((acc, product) => acc + product.precio, 0);
-    this.total.next(totalAmount.toFixed(2));
+    let totalAmount = this.cart.value.reduce(
+      (acc, product) => acc + product.precio,
+      0
+    );
+    if (this.isPremiumUser) {
+      totalAmount = totalAmount * 0.9; // Aplicar 10% de descuento
+    }
+    this.total.next(Number(totalAmount.toFixed(2))); // Actualizar el total
   }
 }

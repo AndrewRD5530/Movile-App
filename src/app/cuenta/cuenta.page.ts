@@ -5,7 +5,7 @@ import { AlertController, ModalController  } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
-
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',
@@ -22,7 +22,7 @@ export class CuentaPage implements OnInit {
   ischip = false;
   mensaje : string = '';
   IsModalOpen: boolean = false;
-  constructor(private router: Router, private cartService: CartService, private modal: ModalController) { }
+  constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService) { }
   @ViewChild('popover') popover: any;
 
   ngOnInit() {
@@ -54,6 +54,8 @@ export class CuentaPage implements OnInit {
         this.apellido = data.apellido;
         this.email = data.correo;
         const isPremiunData = data.isPremium;
+        // Notificar al CartService si es usuario premium y recalcular el total
+        await this.userService.updateUserStatus();
         if (isPremiunData === true) {
           this.isPremium = 'Eres un usuario premium';
           this.ischip = true;
@@ -101,6 +103,7 @@ export class CuentaPage implements OnInit {
       this.ischip = true;
       const response = await axios.post(url, json, { headers});
       const respuesta = response.data;
+      await this.userService.updateUserStatus();
       if (respuesta.details){
         const mensaje = respuesta.details;
         this.mensaje = mensaje;
@@ -126,6 +129,7 @@ export class CuentaPage implements OnInit {
       this.ischip = false;
       const response = await axios.post(url, json, { headers });
       const respuesta = response.data;
+      await this.userService.updateUserStatus();
       if (respuesta.details){
         const mensaje = respuesta.details;
         this.mensaje = mensaje;
