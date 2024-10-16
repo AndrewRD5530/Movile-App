@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef   } from '@angular/core';
 import axios from 'axios';
 import { debounceTime } from 'rxjs/operators';
 import { AlertController, ModalController  } from '@ionic/angular';
@@ -22,7 +22,9 @@ export class CuentaPage implements OnInit {
   ischip = false;
   mensaje : string = '';
   IsModalOpen: boolean = false;
-  constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService) { }
+  isPremiumUser: boolean = false;
+  UserStatus: string = '';
+  constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService, private cdr: ChangeDetectorRef ) { }
   @ViewChild('popover') popover: any;
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class CuentaPage implements OnInit {
     // Suscribirse a los cambios del total
     this.cartService.total$.subscribe(total => {
       this.total = total;
+    });
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium; // Actualizar la variable en la interfaz
+      this.UserStatus = this.userService.getPremiumStatus() ? 'premium' : 'común';
     });
   }
 

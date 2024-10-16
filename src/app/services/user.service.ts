@@ -39,4 +39,8 @@ export class UserService {
   setPremiumStatus(isPremium: boolean) {
     this.isPremium.next(isPremium); // Emitir el nuevo estado
   }
+
+  getPremiumStatus(): boolean {
+    return this.isPremium.getValue(); // Obtener el valor actual del BehaviorSubject
+  }
 }
