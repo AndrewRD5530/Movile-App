@@ -114,4 +114,26 @@ export class CuentaPage implements OnInit {
       console.error("Error al enviar solicitud:", error);
     }
   }
+  async degradarPremiunUser() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/degradarToNormal';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      const response = await axios.post(url, json, { headers });
+      const respuesta = response.data;
+      if (respuesta.details){
+        const mensaje = respuesta.details;
+        this.mensaje = mensaje;
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
+  }
 }
