@@ -66,13 +66,13 @@
       </div>
       <ion-content class="size-content">
         <ion-list [inset]="true" *ngFor="let item of carritoProductos">
-          <ion-item [routerLink]="['/pro-description', item.id]">
-            <!--imagen del producto-->
-            <div style="background-color: #FEF0F0;"  class="ion-margin-vertical">
-              <img  class="product-image" [src]="item.urlImagen" width="64px" height="64px">
-            </div>
-            <ion-label class="text-color text-font-family" style="margin-left: 10px;">{{item.nombre}}</ion-label>
-            <ion-chip color="danger">${{item.precio}}</ion-chip>
+          <ion-item>
+              <!--imagen del producto-->
+              <div style="background-color: #FEF0F0;" class="ion-margin-vertical">
+                <img class="product-image" [src]="item.urlImagen" width="64px" height="64px" [routerLink]="['/pro-description', item.id]">
+              </div>
+              <ion-label class="text-color text-font-family" style="margin-left: 10px;" [routerLink]="['/pro-description', item.id]">{{item.nombre}}</ion-label>
+              <ion-chip color="danger" [routerLink]="['/pro-description', item.id]">${{item.precio}}</ion-chip>
             <ion-button color="btn-eliminar" (click)="removeItem(item.id)">Eliminar</ion-button>
           </ion-item>
         </ion-list>
