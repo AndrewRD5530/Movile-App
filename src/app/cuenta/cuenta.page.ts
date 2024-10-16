@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import axios from 'axios';
 import { debounceTime } from 'rxjs/operators';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController  } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -12,7 +12,6 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cuenta.page.scss'],
 })
 export class CuentaPage implements OnInit {
-  isPopoverOpen = false;
   isMenuOpen = false;
   nombre: string = '';
   apellido: string = '';
@@ -22,7 +21,8 @@ export class CuentaPage implements OnInit {
   total = 0;
   ischip = false;
   mensaje : string = '';
-  constructor(private router: Router, private cartService: CartService) { }
+  IsModalOpen: boolean = false;
+  constructor(private router: Router, private cartService: CartService, private modal: ModalController) { }
   @ViewChild('popover') popover: any;
 
   ngOnInit() {
@@ -72,14 +72,7 @@ export class CuentaPage implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-  openPopover(event: any) {
-    this.popover.event = event;
-    this.isPopoverOpen = true;
-  }
-  // Cerrar el popover
-  closePopover() {
-    this.isPopoverOpen = false;
-  }
+
   async logOut() {
     const access_token = localStorage.getItem('access_token');
     console.log("Tokens:", access_token);
@@ -89,7 +82,6 @@ export class CuentaPage implements OnInit {
     localStorage.removeItem('usuarioID');
     //redireccionar a la página de inicio
     this.router.navigate(['/']);
-    this.isPopoverOpen = false;
   }
 
   async updatePremiunUser() {
@@ -104,6 +96,9 @@ export class CuentaPage implements OnInit {
       "usuarioID": usuarioID,
     };
     try {
+      this.setOpenModal(false);
+      await this.GetInfoUsuario();
+      this.ischip = true;
       const response = await axios.post(url, json, { headers});
       const respuesta = response.data;
       if (respuesta.details){
@@ -126,6 +121,9 @@ export class CuentaPage implements OnInit {
       "usuarioID": usuarioID,
     };
     try {
+      this.setOpenModal(false);
+      await this.GetInfoUsuario();
+      this.ischip = false;
       const response = await axios.post(url, json, { headers });
       const respuesta = response.data;
       if (respuesta.details){
@@ -135,5 +133,8 @@ export class CuentaPage implements OnInit {
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
     }
+  }
+  setOpenModal(isOpen: boolean) {
+    this.IsModalOpen = isOpen;
   }
 }
