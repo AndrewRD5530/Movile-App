@@ -13,7 +13,7 @@
       <ion-content style="background-color: #ffffff !important;">
         <ion-list [inset]="true" style="background-color: #ffffff !important;" >
           <ion-item class="text-color border-color mg-button"  tab="home" lines="none" routerDirection="root" routerLink="/home">
-            <ion-icon name="restaurant" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-icon name="home" color="icon-color" slot="start" size="large"></ion-icon>
             <ion-label class="text-family">Home</ion-label>
           </ion-item>
           <ion-item class="text-color border-color mg-button" tab="buscador" lines="none" routerDirection="root" routerLink="/buscador">
@@ -21,15 +21,15 @@
             <ion-label class="text-family">Buscar</ion-label>
           </ion-item>
           <ion-item class="text-color border-color mg-button" tab="cuenta" lines="none" routerDirection="root" routerLink="/cuenta">
-            <ion-icon name="sparkles" color="icon-color" slot="start" size="large"></ion-icon>
-            <ion-label class="text-family">Mi cuenta</ion-label>
+            <ion-icon name="person" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-label class="text-family">Mi Cuenta</ion-label>
           </ion-item>
           <ion-item class="text-color border-color mg-button"  tab="carrito" lines="none" routerDirection="root" routerLink="/carrito">
-            <ion-icon name="albums" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-icon name="cart" color="icon-color" slot="start" size="large"></ion-icon>
             <ion-label class="text-family">Mi Carrito</ion-label>
           </ion-item>
           <ion-item class="text-color border-color mg-button" tab="ofertas" lines="none" routerDirection="root" routerLink="/ofertas">
-            <ion-icon name="storefront" color="icon-color" slot="start" size="large"></ion-icon>
+            <ion-icon name="trending-down" color="icon-color" slot="start" size="large"></ion-icon>
             <ion-label class="text-family">Ofertas</ion-label>
           </ion-item>
           <ion-item class="text-color border-color mg-button" tab="ofertas" lines="none" routerDirection="root" (click)="logOut()">
@@ -54,7 +54,7 @@
           </ion-chip>
           <ion-chip color="warning" slot="end">
             <ion-icon name="wallet"  color="icon-color"></ion-icon>
-            <ion-label>Total: {{total}}</ion-label>
+            <ion-label>Total: ${{total}}</ion-label>
           </ion-chip>
         </ion-toolbar>
       </ion-header>
@@ -66,13 +66,13 @@
       </div>
       <ion-content class="size-content">
         <ion-list [inset]="true" *ngFor="let item of carritoProductos">
-          <ion-item [routerLink]="['/pro-description', item.id]">
-            <!--imagen del producto-->
-            <div style="background-color: #FEF0F0;"  class="ion-margin-vertical">
-              <img  class="product-image" [src]="item.urlImagen" width="64px" height="64px">
-            </div>
-            <ion-label class="text-color text-font-family" style="margin-left: 10px;">{{item.nombre}}</ion-label>
-            <ion-chip color="danger">${{item.precio}}</ion-chip>
+          <ion-item>
+              <!--imagen del producto-->
+              <div style="background-color: #FEF0F0;" class="ion-margin-vertical">
+                <img class="product-image" [src]="item.urlImagen" width="64px" height="64px" [routerLink]="['/pro-description', item.id]">
+              </div>
+              <ion-label class="text-color text-font-family" style="margin-left: 10px;" [routerLink]="['/pro-description', item.id]">{{item.nombre}}</ion-label>
+              <ion-chip color="danger" [routerLink]="['/pro-description', item.id]">${{item.precio}}</ion-chip>
             <ion-button color="btn-eliminar" (click)="removeItem(item.id)">Eliminar</ion-button>
           </ion-item>
         </ion-list>
