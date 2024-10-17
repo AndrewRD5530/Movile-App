@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-carrito',
@@ -10,8 +11,10 @@ import { Router } from '@angular/router';
 export class CarritoPage implements OnInit {
   total = 0;
   carritoProductos: any[] = [];
-
-  constructor(private router: Router, private cartService: CartService) {}
+  isPremiumUser: boolean = false;
+  UserStatus: string = '';
+  isPremium:  string = '';
+  constructor(private router: Router, private cartService: CartService, private userService: UserService) { }
 
   ngOnInit() {
     this.cartService.cart$.subscribe(items => {
@@ -19,6 +22,10 @@ export class CarritoPage implements OnInit {
     });
     this.cartService.total$.subscribe(total => {
       this.total = total;
+    });
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium; // Actualizar la variable en la interfaz
+      this.UserStatus = this.userService.getPremiumStatus() ? 'premium' : 'común';
     });
   }
 
