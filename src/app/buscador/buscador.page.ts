@@ -5,6 +5,8 @@ import { AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.page.html',
@@ -20,10 +22,14 @@ export class BuscadorPage implements OnInit {
   carritoProductos: any[] = [];
   Usuario = localStorage.getItem('nombre');
   total = 0;
+  isPremiumUser: boolean = false;
+  UserStatus: string = '';
+  isPremium:  string = '';
   constructor(
     private alertController: AlertController,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private userService: UserService
   ) {}
   @ViewChild('popover') popover: any;
   ngOnInit() {
@@ -37,6 +43,10 @@ export class BuscadorPage implements OnInit {
     });
     this.cartService.cart$.subscribe(items => {
       this.carritoProductos = items;
+    });
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium; // Actualizar la variable en la interfaz
+      this.UserStatus = this.userService.getPremiumStatus() ? 'premium' : 'común';
     });
   }
 
