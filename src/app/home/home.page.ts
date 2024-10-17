@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,7 +16,10 @@ export class HomePage {
   isPopoverOpen = false;
   total = 0;
   carritoProductos:any[] =[];
-  constructor(private router: Router, private cartService: CartService) {}
+  isPremiumUser: boolean = false;
+  UserStatus: string = '';
+  isPremium:  string = '';
+  constructor(private router: Router, private cartService: CartService, private userService: UserService) {}
 
   isMenuOpen = false; // Variable para manejar el estado del menú
 
@@ -32,6 +36,10 @@ export class HomePage {
     });
     this.cartService.cart$.subscribe(items => {
       this.carritoProductos = items;
+    });
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium; // Actualizar la variable en la interfaz
+      this.UserStatus = this.userService.getPremiumStatus() ? 'premium' : 'común';
     });
   }
 

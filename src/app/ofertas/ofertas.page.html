@@ -67,7 +67,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
- 
+
       <ion-row class="flex ion-justify-content-center pg-botton">
         <ion-list *ngFor="let product of productos" class="ion-justify-content-center" >
           <ion-card >
@@ -80,7 +80,7 @@
                 <ion-icon name="pin"slot="start" size="medium"></ion-icon>
                 <ion-label class="text-family text-color">${{product.precio}}</ion-label>
               </ion-chip>
-             
+
               <ion-chip color="success">
                 <ion-icon name="pin"slot="start" size="medium"></ion-icon>
                 <ion-label class="text-family text-color">{{product.categoriaID}}</ion-label>
@@ -93,7 +93,6 @@
                 <ion-icon name="store"slot="start" size="medium"></ion-icon>
                 <ion-label class="text-family text-color">{{product.descuento}}</ion-label>
               </ion-chip>
-           
             </ion-card-content>
             <div class="ion-padding flex ion-justify-content-between ">
               <ion-button size="small" color="btn-color" [routerLink]="['/pro-description', product.id]">
