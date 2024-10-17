@@ -53,15 +53,13 @@
             <ion-label>{{UserStatus}}</ion-label>
           </ion-chip>
           <ion-chip color="success" tab="carrito" routerDirection="root"  slot="end">
-            <ion-icon name="cart"  color="success"></ion-icon>
-            <ion-label>Cantidad: {{ getTotalQuantity() }}</ion-label>
+            <ion-label>Cantidad:{{ getTotalQuantity() }}</ion-label>
           </ion-chip>
           <ion-chip color="warning" slot="end">
             <ion-icon name="wallet"  color="icon-color"></ion-icon>
             <ion-label>Total:${{total}}</ion-label>
           </ion-chip>
         </ion-toolbar>
-        <ion-label>Cantidad:{{carritoProductos.length}}</ion-label>
       </ion-header>
 
       <div class="color flex ion-justify-content-center ion-align-items-center" style="height: 15%;">
