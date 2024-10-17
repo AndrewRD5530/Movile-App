@@ -3,6 +3,7 @@ import axios from 'axios';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-ofertas',
@@ -15,15 +16,22 @@ export class OfertasPage implements OnInit {
   carritoProductos: any[] = [];
   total = 0;
   productos: any[] = [];
+  isPremiumUser: boolean = false;
+  UserStatus: string = '';
+  isPremium:  string = '';
   @ViewChild('popover') popover: any;
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, private cartService: CartService,  private userService: UserService) {}
 
   ngOnInit() {
     this.ObtenerProducto();
     this.carritoProductos = this.cartService.getCartItems();
     this.cartService.total$.subscribe((total) => {
       this.total = total;
+    });
+    this.userService.isPremium$.subscribe((isPremium) => {
+      this.isPremiumUser = isPremium; // Actualizar la variable en la interfaz
+      this.UserStatus = this.userService.getPremiumStatus() ? 'premium' : 'común';
     });
   }
 
