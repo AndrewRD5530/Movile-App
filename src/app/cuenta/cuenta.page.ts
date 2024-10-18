@@ -93,6 +93,7 @@ export class CuentaPage implements OnInit {
   }
 
   async updatePremiunUser() {
+    this.setOpenModal(false);
     const token = localStorage.getItem('access_token');
     const url = 'http://127.0.0.1:8000/api/usuario/actualizarToPremium';
     const headers = {
@@ -104,7 +105,7 @@ export class CuentaPage implements OnInit {
       "usuarioID": usuarioID,
     };
     try {
-      this.setOpenModal(false);
+     
       await this.GetInfoUsuario();
       this.ischip = true;
       const response = await axios.post(url, json, { headers});
@@ -119,6 +120,7 @@ export class CuentaPage implements OnInit {
     }
   }
   async degradarPremiunUser() {
+    this.setOpenModal(false);
     const token = localStorage.getItem('access_token');
     const url = 'http://127.0.0.1:8000/api/usuario/degradarToNormal';
     const headers = {
@@ -130,7 +132,6 @@ export class CuentaPage implements OnInit {
       "usuarioID": usuarioID,
     };
     try {
-      this.setOpenModal(false);
       await this.GetInfoUsuario();
       this.ischip = false;
       const response = await axios.post(url, json, { headers });

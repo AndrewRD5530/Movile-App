@@ -160,3 +160,14 @@ price-info{
 .imagen-responsiva{
   margin-top: 25px;
 }
+.block {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffff;
+}
+
+ion-modal {
+  --height: auto;
+}

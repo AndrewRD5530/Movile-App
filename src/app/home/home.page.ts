@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
+import { AlertController, ModalController  } from '@ionic/angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -19,7 +21,13 @@ export class HomePage {
   isPremiumUser: boolean = false;
   UserStatus: string = '';
   isPremium:  string = '';
-  constructor(private router: Router, private cartService: CartService, private userService: UserService) {}
+  IsModalOpenHome: boolean = false;
+  mensaje : string = '';
+  ischip = false;
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
+  constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService, ) { }
 
   isMenuOpen = false; // Variable para manejar el estado del menú
 
@@ -30,6 +38,7 @@ export class HomePage {
   ngOnInit() {
     this.ObtenerProducto();
     this.ObtenerCategorias();
+    this.GetInfoUsuario();
     // Suscribirse a los cambios del total
     this.cartService.total$.subscribe((total) => {
       this.total = total;
@@ -93,5 +102,98 @@ export class HomePage {
     this.cartService.addToCart(product);
     this.carritoProductos = this.cartService.getCartItems();
   }
+  async updatePremiunUser() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/actualizarToPremium';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      this.setOpenModalHome(false);
+      await this.GetInfoUsuario();
+      this.ischip = true;
+      const response = await axios.post(url, json, { headers});
+      const respuesta = response.data;
+      await this.userService.updateUserStatus();
+      if (respuesta.details){
+        const mensaje = respuesta.details;
+        this.mensaje = mensaje;
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
+  }
+  async degradarPremiunUser() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/degradarToNormal';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      this.setOpenModalHome(false);
+      await this.GetInfoUsuario();
+      this.ischip = false;
+      const response = await axios.post(url, json, { headers });
+      const respuesta = response.data;
+      await this.userService.updateUserStatus();
+      if (respuesta.details){
+        const mensaje = respuesta.details;
+        this.mensaje = mensaje;
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
+  }
+  setOpenModalHome(isOpen: boolean) {
+    this.IsModalOpenHome = isOpen;
+  }
+  async GetInfoUsuario() {
+    const token = localStorage.getItem('access_token');
+    const url = 'http://127.0.0.1:8000/api/usuario/consultar';
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const usuarioID = localStorage.getItem('usuarioID');
+    const json = {
+      "usuarioID": usuarioID,
+    };
+    try {
+      const response = await axios.post(url, json, { headers});
+      const respuesta = response.data;
+      if (respuesta.data) {
+        const data = respuesta.data.details.user;
+        this.nombre = data.nombre;
+        this.apellido = data.apellido;
+        this.email = data.correo;
+        const isPremiunData = data.isPremium;
+        // Notificar al CartService si es usuario premium y recalcular el total
+        await this.userService.updateUserStatus();
+        if (isPremiunData === true) {
+          this.isPremium = 'Eres un usuario premium';
+          this.ischip = true;
+        } else {
+          this.isPremium = 'Eres un usuario no premium';
+          this.ischip = false;
+        }
+        console.log("Datos:", this.nombre, this.apellido, this.email);
+      } else {
+        console.log("Error:", respuesta.error);
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud:", error);
+    }
+  }
+ 
 
 }
