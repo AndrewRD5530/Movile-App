@@ -45,7 +45,7 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-chip [color]="UserStatus === 'premium' ? 'success' : 'danger'"slot="end" tab="carrito" routerDirection="root"  routerLink="/carrito">
+          <ion-chip [color]="UserStatus === 'premium' ? 'success' : 'danger'"slot="end" tab="carrito" routerDirection="root"  routerLink="/cuenta">
             <ion-icon name="cash"  color="icon-color"></ion-icon>
             <ion-label>{{UserStatus}}</ion-label>
           </ion-chip>
@@ -76,6 +76,10 @@
             <h1 class="text-color text-family" style="text-align: center; font-size: 30px;"><b>Las mejores Tendencias del Mercado</b></h1><br>
             <div>
               <ion-label class="text-color text-family" style="text-align: center; font-size: 15px;">Aqui puedes visualizar las tendencias del momento y los mejores precios encontrados en el mercado</ion-label>
+            </div>
+            <div class=" ion-padding" *ngIf="isPremiumUser">
+              <!--mostrar si el usuario es premium-->
+              <ion-title class="text-color font-size-text"  style=" font-size: 15px;">Se ha aplicado una mejor recomendación!</ion-title>
             </div>
           </ion-col>
         </ion-row>

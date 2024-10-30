@@ -48,7 +48,7 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-chip [color]="UserStatus === 'premium' ? 'success' : 'danger'"slot="end" tab="carrito" routerDirection="root"  routerLink="/carrito">
+          <ion-chip [color]="UserStatus === 'premium' ? 'success' : 'danger'"slot="end" tab="carrito" routerDirection="root"  routerLink="/cuenta">
             <ion-icon name="cash"  color="icon-color"></ion-icon>
             <ion-label>{{UserStatus}}</ion-label>
           </ion-chip>
@@ -66,7 +66,12 @@
           <ion-col>
             <h1 class="text-color text-family" style="text-align: center; font-size: 30px;">
               <b>Mejores Ofertas</b>
+              <div class=" ion-padding" *ngIf="isPremiumUser">
+                <!--mostrar si el usuario es premium-->
+                <b style="font-size: 15px;">Se ha aplicado una mejor recomendación!</b>
+              </div>
             </h1>
+
           </ion-col>
         </ion-row>
       </ion-grid>

@@ -63,9 +63,6 @@ export class CartService {
       (acc, product) => acc + product.precio * product.quantity, // Multiplica precio por cantidad
       0
     );
-    if (this.isPremiumUser) {
-      totalAmount = totalAmount * 0.9; // Aplicar 10% de descuento
-    }
     this.total.next(Number(totalAmount.toFixed(2))); // Actualizar el total
   }
 }
