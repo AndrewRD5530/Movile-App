@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { IonModal } from '@ionic/angular';
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -19,8 +21,11 @@ export class LoginPage implements OnInit {
   isErrorCuenta: boolean = false;
   isToastOpen: boolean = false;
   IsModalOpen: boolean = false;
+  private apiUrl = environment.apiUrl;
   constructor( private router: Router, private toastController: ToastController,) { }
   ngOnInit() {
+    this.isToastOpen = false;
+    this.IsModalOpen = false;
   }
   sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -32,8 +37,8 @@ export class LoginPage implements OnInit {
   async onSubmit() {
     console.log("Email:", this.email);
     console.log("Contraseña:", this.password);
-      // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
-      const url = 'http://127.0.0.1:8000/api/usuario/login';
+      // Aquí se puede realizar la validación de la contraseña y enviar la solicitud reemplazar la url por la que se encuentra el backend por el .env
+      const url = `${this.apiUrl}api/usuario/login`;
       const Credenciales = {
         "correo": this.email,
         "password": this.password
@@ -86,7 +91,7 @@ export class LoginPage implements OnInit {
   async onRegistrar() {
     if (this.password === this.Confirmpassword) {
       // Aquí se puede realizar la validación de la contraseña y enviar la solicitud
-    const url = 'http://127.0.0.1:8000/api/usuario/crear';
+    const url = `${this.apiUrl}api/usuario/crear`;
     const Credenciales = {
       "correo": this.email,
       "password": this.password,

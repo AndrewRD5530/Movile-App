@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CartService } from '../services/cart.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-pro-description',
@@ -20,6 +21,7 @@ export class ProDescriptionPage implements OnInit {
   total = 0;
   isPopoverOpen = false;
   isMenuOpen = false;
+  private apiUrl = environment.apiUrl;
 
   constructor(private route: ActivatedRoute, private http: HttpClient,private router: Router, private location: Location,
      private cartService: CartService, private cdr: ChangeDetectorRef) {  }
@@ -51,7 +53,7 @@ export class ProDescriptionPage implements OnInit {
       "productoID": id
     };
 
-    const url = 'http://127.0.0.1:8000/ToolsData/api/filtrar/InformacionByProducto';
+    const url = `${this.apiUrl}ToolsData/api/filtrar/InformacionByProducto`;
 
     try {
       const response = await axios.post(url, json, { headers });

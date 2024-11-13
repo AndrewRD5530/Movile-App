@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
 import { AlertController, ModalController  } from '@ionic/angular';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -27,6 +27,7 @@ export class HomePage {
   nombre: string = '';
   apellido: string = '';
   email: string = '';
+  private apiUrl = environment.apiUrl;
   constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService, ) { }
 
   isMenuOpen = false; // Variable para manejar el estado del menú
@@ -72,7 +73,7 @@ export class HomePage {
       "Authorization": `Bearer ${token}`
     }
     try {
-      const respuesta = await axios.get("http://127.0.0.1:8000/DataScraping/api/Producto/Listar", { headers });
+      const respuesta = await axios.post(`${this.apiUrl}DataScraping/api/Producto/Listar`, { headers });
       this.productos = respuesta.data.data.productos;
       //a;adiendo los productos con mejkores precios a la lista
       console.log(this.productos);
@@ -86,10 +87,10 @@ export class HomePage {
     // headers para autenticar
     const headers = {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
     try {
-      const respuesta = await axios.get("http://127.0.0.1:8000/DataScraping/api/Categoria/Listar", { headers });
+      const respuesta = await axios.post(`${this.apiUrl}DataScraping/api/Categoria/Listar`, { headers });
 
       this.categorias = respuesta.data.data.categorias;
       console.log("categorias",this.categorias);
@@ -104,7 +105,7 @@ export class HomePage {
   }
   async updatePremiunUser() {
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/actualizarToPremium';
+    const url = `${this.apiUrl}api/usuario/actualizarToPremium`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -130,7 +131,7 @@ export class HomePage {
   }
   async degradarPremiunUser() {
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/degradarToNormal';
+    const url = `${this.apiUrl}api/usuario/degradarToNormal`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -159,7 +160,7 @@ export class HomePage {
   }
   async GetInfoUsuario() {
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/consultar';
+    const url = `${this.apiUrl}api/usuario/consultar`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,

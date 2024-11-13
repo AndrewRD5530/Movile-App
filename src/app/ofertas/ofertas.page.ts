@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-ofertas',
@@ -19,6 +20,8 @@ export class OfertasPage implements OnInit {
   isPremiumUser: boolean = false;
   UserStatus: string = '';
   isPremium:  string = '';
+  private apiUrl = environment.apiUrl;
+
   @ViewChild('popover') popover: any;
 
   constructor(private router: Router, private cartService: CartService,  private userService: UserService) {}
@@ -43,7 +46,7 @@ export class OfertasPage implements OnInit {
       'Authorization': `Bearer ${token}`,
     };
     try {
-      const respuesta = await axios.get('http://127.0.0.1:8000/ToolsData/api/ofertas/productos', { headers });
+      const respuesta = await axios.post(`${this.apiUrl}ToolsData/api/ofertas/productos`, { headers });
       console.log('Respuesta:', respuesta);
       const data = respuesta.data.data.productos;
       this.productos = data.flat();

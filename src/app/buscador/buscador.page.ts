@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-buscador',
@@ -25,6 +26,8 @@ export class BuscadorPage implements OnInit {
   isPremiumUser: boolean = false;
   UserStatus: string = '';
   isPremium:  string = '';
+  private apiUrl = environment.apiUrl;
+
   constructor(
     private alertController: AlertController,
     private router: Router,
@@ -77,7 +80,7 @@ export class BuscadorPage implements OnInit {
       keyWord: searchTerm,
     };
 
-    const url = 'http://127.0.0.1:8000/ToolsData/api/SeachProductos';
+    const url = `${this.apiUrl}ToolsData/api/SeachProductos`;
 
     try {
       const response = await axios.post(url, json, { headers });

@@ -4,7 +4,7 @@
       <ion-toolbar>
         <ion-title>Super Price</ion-title>
         <ion-buttons slot="end" id="open-modal">
-          <ion-button size="small" (click)="setOpenModal(true)">
+          <ion-button size="small" (click)="setOpenModal(true)" id="open-modal">
             Registrate
             <ion-icon class="ion-padding" name="person-add" slot="end"></ion-icon>
           </ion-button>
@@ -36,7 +36,7 @@
     </ion-content>
 
     <!--Modal para el registro-->
-    <ion-modal [isOpen]="IsModalOpen" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ion-modal [isOpen]="IsModalOpen" trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
       <ng-template>
         <div class="flex ion-justify-content-center bg-color">
           <img src="../../assets/logo.svg" alt="logoCafe" class="logo" style="margin-top: 15px;">

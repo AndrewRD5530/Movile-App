@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',
@@ -24,6 +26,8 @@ export class CuentaPage implements OnInit {
   IsModalOpen: boolean = false;
   isPremiumUser: boolean = false;
   UserStatus: string = '';
+  private apiUrl = environment.apiUrl;
+
   constructor(private router: Router, private cartService: CartService, private modal: ModalController, private userService: UserService, private cdr: ChangeDetectorRef ) { }
   @ViewChild('popover') popover: any;
 
@@ -42,7 +46,7 @@ export class CuentaPage implements OnInit {
 
   async GetInfoUsuario() {
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/consultar';
+    const url = `${this.apiUrl}api/usuario/consultar`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -95,7 +99,7 @@ export class CuentaPage implements OnInit {
   async updatePremiunUser() {
     this.setOpenModal(false);
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/actualizarToPremium';
+    const url = `${this.apiUrl}api/usuario/actualizarToPremium`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -122,7 +126,7 @@ export class CuentaPage implements OnInit {
   async degradarPremiunUser() {
     this.setOpenModal(false);
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/degradarToNormal';
+    const url = `${this.apiUrl}api/usuario/degradarToNormal`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,

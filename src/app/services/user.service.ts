@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import axios from 'axios';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +9,14 @@ import axios from 'axios';
 export class UserService {
   private isPremium = new BehaviorSubject<boolean>(false); // Estado inicial: no premium
   isPremium$ = this.isPremium.asObservable(); // Observable del estado premium
+  private apiUrl = environment.apiUrl;
 
   constructor() {}
 
   // Obtener el estado del usuario desde el servidor
   async updateUserStatus() {
     const token = localStorage.getItem('access_token');
-    const url = 'http://127.0.0.1:8000/api/usuario/consultar';
+    const url = `${this.apiUrl}api/usuario/consultar`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
